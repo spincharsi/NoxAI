@@ -2,9 +2,19 @@ import imageCompression from 'browser-image-compression';
 import { GoogleGenAI } from '@google/genai';
 import type { PrescriptionScanResult } from '../types';
 
-// Vite exposes env vars prefixed with VITE_. Gemini SDK is browser-side here.
-const GEMINI_API_KEY =
-  import.meta.env.VITE_GEMINI_API_KEY as string | undefined;
+// Resolve the Gemini key at call time. Vite replaces import.meta.env.VITE_* at
+// build time, so the var must exist in the build environment (Vercel: Project
+// Settings > Environment Variables, then redeploy) or the call below throws.
+function getGeminiApiKey(): string {
+  const key = import.meta.env.VITE_GEMINI_API_KEY as string | undefined;
+  if (!key || !key.trim()) {
+    throw new Error(
+      'Gemini API key is missing. Set VITE_GEMINI_API_KEY in your environment ' +
+        '(Vercel: Project Settings > Environment Variables, then redeploy).'
+    );
+  }
+  return key.trim();
+}
 
 const GEMINI_PROMPT = `You are a medical prescription OCR and salt-analysis AI specialized for the Pakistani pharmaceutical market.
 Analyze the prescription image and extract every medicine written on it with exact accuracy.
@@ -103,17 +113,13 @@ export async function scanPrescription(
   if (!file) {
     throw new Error('No image was provided for scanning.');
   }
-  if (!GEMINI_API_KEY) {
-    throw new Error(
-      'Gemini API key is not configured. Add VITE_GEMINI_API_KEY to your environment.'
-    );
-  }
+  const apiKey = getGeminiApiKey();
 
   const compressed = await compressImage(file);
   const base64 = await fileToBase64(compressed);
   const mimeType = compressed.type || 'image/jpeg';
 
-  const ai = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
+  const ai = new GoogleGenAI({ apiKey });
 
   let text = '';
   try {
