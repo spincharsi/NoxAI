@@ -641,7 +641,7 @@ export default function App() {
             <div className="w-full flex flex-col md:grid md:grid-cols-3 gap-4 md:gap-6 md:items-stretch">
 
               {/* Card 1: AI Scan Prescription (Mobile: 3rd | Desktop: 1st) */}
-              <div className="w-full h-auto md:h-full flex flex-col justify-between bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-4 md:p-8 shadow-xl order-3 md:order-1">
+              <div className="w-full h-auto md:h-full flex flex-col justify-between bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-4 md:p-8 shadow-xl order-3 md:order-1 md:col-start-1 md:row-start-1">
                 <div className="flex flex-col flex-1">
                   <div className="flex items-center justify-between mb-2 md:mb-4">
                     <h2 className="text-xs font-bold tracking-wider text-white uppercase">
@@ -698,10 +698,10 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Card 2: Smart Health Tips (Mobile: 2nd | Desktop: 2nd) */}
+              {/* Card 3: Smart Health Tips (Mobile: 2nd | Desktop: 3rd) */}
               <button
                 onClick={() => setActiveModal('tips')}
-                className="text-left w-full h-auto md:h-full flex flex-col justify-between bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-4 md:p-8 shadow-xl cursor-pointer md:cursor-default hover:border-zinc-700 transition order-2 md:order-2"
+                className="text-left w-full h-auto md:h-full flex flex-col justify-between bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-4 md:p-8 shadow-xl cursor-pointer md:cursor-default hover:border-zinc-700 transition order-2 md:order-3 md:col-start-3 md:row-start-1"
               >
                 <div>
                   <div className="flex items-center justify-between">
@@ -711,7 +711,7 @@ export default function App() {
                         <h2 className="text-xs font-bold tracking-wider text-zinc-200 uppercase">
                           Smart Health Tips
                         </h2>
-                        <p className="text-[10px] md:text-[11px] text-zinc-400">
+                        <p className="lg:hidden text-[10px] md:text-[11px] text-zinc-400">
                           Save up to 70% on local generic salts
                         </p>
                       </div>
@@ -739,8 +739,8 @@ export default function App() {
                 </div>
               </button>
 
-              {/* Card 3: Weekly Schedule (Mobile: 1st | Desktop: 3rd) */}
-              <div className="w-full h-auto md:h-full flex flex-col justify-between bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-4 md:p-8 shadow-xl order-1 md:order-3">
+              {/* Card 2: Weekly Dosage Reminder (Mobile: 1st | Desktop: 2nd) */}
+              <div className="w-full h-auto md:h-full flex flex-col justify-between bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-4 md:p-8 shadow-xl order-1 md:order-2 md:col-start-2 md:row-start-1">
                 <div>
                   <div className="flex items-center justify-between mb-3 md:mb-4">
                     <h2 className="text-xs font-semibold tracking-wider text-white uppercase">
@@ -850,44 +850,50 @@ export default function App() {
                         <span className="text-[11px] font-medium">{newReminderTime || 'Set time'}</span>
                       </button>
                       {showTimePicker && (
-                        <div className="absolute top-full right-0 mt-2 rounded-2xl border border-white/15 shadow-2xl bg-gray-900/95 backdrop-blur-xl p-3 z-50 w-48">
-                          <div className="flex items-center justify-center gap-1.5">
-                            <select
-                              value={pickerHour}
-                              onChange={(e) => setPickerHour(Number(e.target.value))}
-                              className="bg-white/10 border border-white/15 rounded-lg text-white text-xs px-2 py-1.5 focus:outline-none"
+                        <>
+                          <div
+                            className="fixed inset-0 z-[99]"
+                            onClick={() => setShowTimePicker(false)}
+                          />
+                          <div className="absolute bottom-full mb-2 left-0 z-[100] rounded-2xl border border-white/15 shadow-2xl bg-gray-900/95 backdrop-blur-xl p-3 w-48">
+                            <div className="flex items-center justify-center gap-1.5">
+                              <select
+                                value={pickerHour}
+                                onChange={(e) => setPickerHour(Number(e.target.value))}
+                                className="bg-gray-900/95 backdrop-blur-xl border border-white/15 shadow-2xl text-white text-xs rounded-xl px-2 py-1.5 hover:bg-white/10 focus:outline-none"
+                              >
+                                {Array.from({ length: 12 }, (_, i) => i + 1).map((h) => (
+                                  <option key={h} value={h} className="bg-gray-900">{String(h).padStart(2, '0')}</option>
+                                ))}
+                              </select>
+                              <span className="text-white text-xs">:</span>
+                              <select
+                                value={pickerMinute}
+                                onChange={(e) => setPickerMinute(Number(e.target.value))}
+                                className="bg-gray-900/95 backdrop-blur-xl border border-white/15 shadow-2xl text-white text-xs rounded-xl px-2 py-1.5 hover:bg-white/10 focus:outline-none"
+                              >
+                                {[0, 15, 30, 45].map((mm) => (
+                                  <option key={mm} value={mm} className="bg-gray-900">{String(mm).padStart(2, '0')}</option>
+                                ))}
+                              </select>
+                              <select
+                                value={pickerPeriod}
+                                onChange={(e) => setPickerPeriod(e.target.value as 'AM' | 'PM')}
+                                className="bg-gray-900/95 backdrop-blur-xl border border-white/15 shadow-2xl text-white text-xs rounded-xl px-2 py-1.5 hover:bg-white/10 focus:outline-none"
+                              >
+                                <option value="AM" className="bg-gray-900">AM</option>
+                                <option value="PM" className="bg-gray-900">PM</option>
+                              </select>
+                            </div>
+                            <button
+                              type="button"
+                              onClick={confirmTime}
+                              className="w-full mt-2.5 bg-gray-900/95 backdrop-blur-xl border border-white/15 shadow-2xl text-white rounded-xl hover:bg-white/10 py-1.5 text-[11px] font-bold uppercase tracking-wider transition"
                             >
-                              {Array.from({ length: 12 }, (_, i) => i + 1).map((h) => (
-                                <option key={h} value={h} className="bg-gray-900">{String(h).padStart(2, '0')}</option>
-                              ))}
-                            </select>
-                            <span className="text-white text-xs">:</span>
-                            <select
-                              value={pickerMinute}
-                              onChange={(e) => setPickerMinute(Number(e.target.value))}
-                              className="bg-white/10 border border-white/15 rounded-lg text-white text-xs px-2 py-1.5 focus:outline-none"
-                            >
-                              {[0, 15, 30, 45].map((mm) => (
-                                <option key={mm} value={mm} className="bg-gray-900">{String(mm).padStart(2, '0')}</option>
-                              ))}
-                            </select>
-                            <select
-                              value={pickerPeriod}
-                              onChange={(e) => setPickerPeriod(e.target.value as 'AM' | 'PM')}
-                              className="bg-white/10 border border-white/15 rounded-lg text-white text-xs px-2 py-1.5 focus:outline-none"
-                            >
-                              <option value="AM" className="bg-gray-900">AM</option>
-                              <option value="PM" className="bg-gray-900">PM</option>
-                            </select>
+                              Done
+                            </button>
                           </div>
-                          <button
-                            type="button"
-                            onClick={confirmTime}
-                            className="w-full mt-2.5 bg-white/15 hover:bg-white/25 border border-white/15 rounded-lg py-1.5 text-[11px] font-bold text-white uppercase tracking-wider transition"
-                          >
-                            Done
-                          </button>
-                        </div>
+                        </>
                       )}
                     </div>
                     <button
@@ -923,7 +929,7 @@ export default function App() {
 
                 <div className="hidden md:flex pt-3 border-t border-white/20 items-center justify-between text-[11px] mt-3">
                   <span className="text-zinc-400">Selected: <strong className="text-zinc-200">{selectedDay.short} {selectedDay.date}, {currentYear}</strong></span>
-                  <span className="text-blue-400 font-medium">{dayReminders.length} Reminder{dayReminders.length !== 1 ? 's' : ''}</span>
+                  <span className="text-white font-medium">{dayReminders.length} Reminder{dayReminders.length !== 1 ? 's' : ''}</span>
                 </div>
               </div>
 
@@ -986,12 +992,12 @@ export default function App() {
                       <p className="text-[10px] text-zinc-400 uppercase font-semibold">
                         {language === 'en' ? 'Doctor Diagnosis / Disease' : 'پرچی کی تشخیص (بیماری)'}
                       </p>
-                      <h3 className="text-sm md:text-base font-bold text-blue-400 mt-0.5">
+                      <h3 className="text-sm md:text-base font-bold text-white mt-0.5">
                         {language === 'en' ? currentScan.disease : (currentScan.diseaseUr ?? currentScan.disease)}
                       </h3>
                     </div>
                   </div>
-                  <span className="text-[10px] text-blue-400 font-bold shrink-0">
+                  <span className="text-[10px] text-white font-bold shrink-0">
                     100% Salt Match
                   </span>
                 </div>
@@ -1013,7 +1019,7 @@ export default function App() {
                     {(language === 'en' ? med.purposeEn : med.purposeUr) && (
                       <div className="bg-white/[0.03] border border-white/5 rounded-2xl p-2.5 space-y-0.5">
                         <p className="text-[10px] text-zinc-400 uppercase font-bold tracking-wider flex items-center gap-1.5">
-                          <Zap className="w-3.5 h-3.5 text-amber-400" />
+                          <Zap className="w-3.5 h-3.5 text-white" />
                           {language === 'en' ? 'What it is used for:' : 'دوائی کا مقصد (یہ کس لیے ہے):'}
                         </p>
                         <p className="text-xs md:text-sm text-zinc-200 font-medium leading-relaxed">
@@ -1025,7 +1031,7 @@ export default function App() {
                     {(language === 'en' ? med.dosageEn : med.dosageUr) && (
                       <div className="bg-white/[0.03] border border-white/5 rounded-2xl p-2.5 space-y-0.5">
                         <p className="text-[10px] text-zinc-400 uppercase font-bold tracking-wider flex items-center gap-1.5">
-                          <Clock className="w-3.5 h-3.5 text-blue-400" />
+                          <Clock className="w-3.5 h-3.5 text-white" />
                           {language === 'en' ? 'Dosage & Instructions:' : 'خوراک کا طریقہ کار:'}
                         </p>
                         <p className="text-xs md:text-sm text-zinc-200 font-medium">
@@ -1034,16 +1040,16 @@ export default function App() {
                       </div>
                     )}
 
-                    <div className="bg-blue-500/10 border border-blue-500/20 p-2.5 rounded-2xl flex justify-between items-center shadow-lg gap-3">
+                    <div className="bg-white/[0.05] border border-white/15 p-2.5 rounded-2xl flex justify-between items-center shadow-lg gap-3">
                       <div className="space-y-0.5">
-                        <p className="text-[10px] text-blue-400 font-bold uppercase tracking-wider">
+                        <p className="text-[10px] text-white font-bold uppercase tracking-wider">
                           {language === 'en' ? 'Cheaper Generic Salt Equivalent:' : 'سستا اور بااعتماد متبادل:'}
                         </p>
                         <p className="font-extrabold text-white text-sm md:text-base">{med.alternative}</p>
                       </div>
                       <div className="text-right space-y-0.5 shrink-0">
-                        <p className="font-extrabold text-blue-400 text-sm md:text-base">{med.altPrice}</p>
-                        <span className="text-[10px] text-blue-400 font-bold block">
+                        <p className="font-extrabold text-white text-sm md:text-base">{med.altPrice}</p>
+                        <span className="text-[10px] text-gray-200 font-bold block">
                           {med.savings}
                         </span>
                       </div>
@@ -1082,10 +1088,10 @@ export default function App() {
                     Select File
                   </button>
                 </div>
-                <div className="flex items-start gap-2.5 bg-blue-500/10 border border-blue-500/20 rounded-2xl p-3.5 text-left max-w-md mx-auto">
-                  <Lightbulb className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
-                  <p className="text-[11px] md:text-xs text-blue-100/90 leading-relaxed">
-                    <strong className="text-blue-300">Tip:</strong> For best accuracy, upload a clear photo of the printed Medicine Box or Strip instead of handwritten prescriptions.
+                <div className="flex items-start gap-2.5 bg-white/[0.05] border border-white/15 rounded-2xl p-3.5 text-left max-w-md mx-auto">
+                  <Lightbulb className="w-4 h-4 text-white shrink-0 mt-0.5" />
+                  <p className="text-[11px] md:text-xs text-gray-200 leading-relaxed">
+                    <strong className="text-white">Tip:</strong> For best accuracy, upload a clear photo of the printed Medicine Box or Strip instead of handwritten prescriptions.
                   </p>
                 </div>
               </div>
