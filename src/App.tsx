@@ -650,7 +650,7 @@ export default function App() {
             <div className="w-full flex flex-col md:grid md:grid-cols-3 gap-4 md:gap-6 md:items-stretch">
 
               {/* Card 1: AI Scan Prescription (Mobile: 3rd | Desktop: 1st) */}
-              <div className="w-full h-auto md:h-full flex flex-col justify-between bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-4 md:p-8 shadow-xl order-3 md:order-1 md:col-start-1 md:row-start-1">
+              <div className="w-full h-auto md:h-full flex flex-col justify-between bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl px-4 py-2.5 md:p-8 shadow-xl order-3 md:order-1 md:col-start-1 md:row-start-1">
                 <div className="flex flex-col flex-1">
                   <div className="flex items-center justify-between mb-2 md:mb-4">
                     <h2 className="text-xs font-bold tracking-wider text-white uppercase">
@@ -710,7 +710,7 @@ export default function App() {
               {/* Card 3: Smart Health Tips (Mobile: 2nd | Desktop: 3rd) */}
               <button
                 onClick={() => setActiveModal('tips')}
-                className="text-left w-full h-auto md:h-full flex flex-col justify-between bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-4 md:p-8 shadow-xl cursor-pointer md:cursor-default hover:border-zinc-700 transition order-2 md:order-3 md:col-start-3 md:row-start-1"
+                className="text-left w-full h-auto md:h-full flex flex-col justify-between bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl px-4 py-2.5 md:p-8 shadow-xl cursor-pointer md:cursor-default hover:border-zinc-700 transition order-2 md:order-3 md:col-start-3 md:row-start-1"
               >
                 <div>
                   <div className="flex items-center justify-between">
@@ -748,7 +748,7 @@ export default function App() {
               </button>
 
               {/* Card 2: Weekly Dosage Reminder (Mobile: 1st | Desktop: 2nd) */}
-              <div className="w-full h-auto md:h-full flex flex-col justify-between bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-4 md:p-8 shadow-xl order-1 md:order-2 md:col-start-2 md:row-start-1 relative z-20">
+              <div className="w-full h-auto md:h-full flex flex-col justify-between bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl px-4 py-2.5 md:p-8 shadow-xl order-1 md:order-2 md:col-start-2 md:row-start-1 relative z-20">
                 <div>
                   <div className="flex items-center justify-between mb-3 md:mb-4">
                     <h2 className="text-xs font-semibold tracking-wider text-white uppercase">
@@ -772,7 +772,7 @@ export default function App() {
                         <button
                           key={index}
                           onClick={() => setSelectedDay({ short: currentMonthShort, date: item.date })}
-                          className={`flex flex-col items-center justify-center py-2.5 rounded-xl border transition-all cursor-pointer ${
+                          className={`flex flex-col items-center justify-center py-2.5 rounded-full border transition-all cursor-pointer ${
                             isSelected
                               ? 'bg-zinc-100 text-zinc-950 border-white font-bold shadow-md scale-105'
                               : 'bg-white/5 hover:bg-white/10 border border-white/5 text-white font-medium hover:border-white/20'
