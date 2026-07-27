@@ -650,9 +650,9 @@ export default function App() {
             <div className="w-full flex flex-col md:grid md:grid-cols-3 gap-4 md:gap-6 md:items-stretch">
 
               {/* Card 1: AI Scan Prescription (Mobile: 3rd | Desktop: 1st) */}
-              <div className="w-full h-auto md:h-full flex flex-col justify-between bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-4 md:p-8 shadow-xl order-3 md:order-1 md:col-start-1 md:row-start-1">
+              <div className="w-full h-auto md:h-full flex flex-col justify-between bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-3.5 md:p-8 shadow-xl order-3 md:order-1 md:col-start-1 md:row-start-1">
                 <div className="flex flex-col flex-1">
-                  <div className="flex items-center justify-between mb-2 md:mb-4">
+                  <div className="flex items-center justify-between mb-1.5 md:mb-4">
                     <h2 className="text-xs font-bold tracking-wider text-white uppercase">
                       AI Scan Prescription
                     </h2>
@@ -661,11 +661,11 @@ export default function App() {
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-2 md:grid-cols-1 gap-3 md:gap-4 my-2 md:my-3 md:flex-1 relative">
+                  <div className="grid grid-cols-2 md:grid-cols-1 gap-2.5 md:gap-4 my-1.5 md:my-3 md:flex-1 relative">
                     <button
                       onClick={openCameraModal}
                       disabled={loading}
-                      className="flex flex-col items-center justify-center py-5 md:py-8 px-3 bg-zinc-800/60 hover:bg-zinc-800 border border-zinc-700/60 hover:border-white/30 rounded-2xl shadow-inner hover:shadow-[0_0_15px_rgba(255,255,255,0.08)] transition-all duration-300 group disabled:opacity-50 disabled:cursor-not-allowed md:flex-1 md:min-h-[120px]"
+                      className="flex flex-col items-center justify-center py-3.5 md:py-8 px-3 bg-zinc-800/60 hover:bg-zinc-800 border border-zinc-700/60 hover:border-white/30 rounded-2xl shadow-inner hover:shadow-[0_0_15px_rgba(255,255,255,0.08)] transition-all duration-300 group disabled:opacity-50 disabled:cursor-not-allowed md:flex-1 md:min-h-[120px]"
                     >
                       <Camera className="w-7 h-7 md:w-10 md:h-10 text-zinc-200 mb-1.5 md:mb-2 group-hover:scale-110 transition-transform" />
                       <span className="text-[10px] md:text-xs font-bold tracking-wider text-zinc-200 uppercase">
@@ -675,7 +675,7 @@ export default function App() {
                     <button
                       onClick={handleUploadClick}
                       disabled={loading}
-                      className="flex flex-col items-center justify-center py-5 md:py-8 px-3 bg-zinc-800/60 hover:bg-zinc-800 border border-zinc-700/60 hover:border-white/30 rounded-2xl shadow-inner hover:shadow-[0_0_15px_rgba(255,255,255,0.08)] transition-all duration-300 group disabled:opacity-50 disabled:cursor-not-allowed md:flex-1 md:min-h-[120px]"
+                      className="flex flex-col items-center justify-center py-3.5 md:py-8 px-3 bg-zinc-800/60 hover:bg-zinc-800 border border-zinc-700/60 hover:border-white/30 rounded-2xl shadow-inner hover:shadow-[0_0_15px_rgba(255,255,255,0.08)] transition-all duration-300 group disabled:opacity-50 disabled:cursor-not-allowed md:flex-1 md:min-h-[120px]"
                     >
                       <Upload className="w-7 h-7 md:w-10 md:h-10 text-zinc-200 mb-1.5 md:mb-2 group-hover:scale-110 transition-transform" />
                       <span className="text-[10px] md:text-xs font-bold tracking-wider text-zinc-200 uppercase">
@@ -692,7 +692,7 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="space-y-1.5 pt-2.5 border-t border-white/20 mt-2 md:mt-3 md:pt-3 md:space-y-2">
+                <div className="space-y-1.5 pt-2 md:pt-3 border-t border-white/20 mt-1.5 md:mt-3 md:space-y-2">
                   {featureBadges.map((f) => {
                     const Icon = f.icon;
                     return (
@@ -710,7 +710,7 @@ export default function App() {
               {/* Card 3: Smart Health Tips (Mobile: 2nd | Desktop: 3rd) */}
               <button
                 onClick={() => setActiveModal('tips')}
-                className="text-left w-full h-auto md:h-full flex flex-col justify-between bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-4 md:p-8 shadow-xl cursor-pointer md:cursor-default hover:border-zinc-700 transition order-2 md:order-3 md:col-start-3 md:row-start-1"
+                className="text-left w-full h-auto md:h-full flex flex-col justify-between bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-3.5 md:p-8 shadow-xl cursor-pointer md:cursor-default hover:border-zinc-700 transition order-2 md:order-3 md:col-start-3 md:row-start-1"
               >
                 <div>
                   <div className="flex items-center justify-between">
@@ -752,9 +752,9 @@ export default function App() {
               </button>
 
               {/* Card 2: Weekly Dosage Reminder (Mobile: 1st | Desktop: 2nd) */}
-              <div className="w-full h-auto md:h-full flex flex-col justify-between bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-4 md:p-8 shadow-xl order-1 md:order-2 md:col-start-2 md:row-start-1 relative z-20">
+              <div className="w-full h-auto md:h-full flex flex-col justify-between bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-3.5 md:p-8 shadow-xl order-1 md:order-2 md:col-start-2 md:row-start-1 relative z-20">
                 <div>
-                  <div className="flex items-center justify-between mb-3 md:mb-4">
+                  <div className="flex items-center justify-between mb-2 md:mb-4">
                     <h2 className="text-xs font-semibold tracking-wider text-white uppercase">
                       Weekly Dosage Reminder
                     </h2>
@@ -769,7 +769,7 @@ export default function App() {
                   </div>
 
                   {/* MOBILE: compact 7-day pill strip */}
-                  <div className="grid md:hidden grid-cols-7 gap-1.5 my-2 text-center">
+                  <div className="grid md:hidden grid-cols-7 gap-1.5 my-1.5 text-center">
                     {weekSchedule.map((item, index) => {
                       const isSelected = selectedDay.short === currentMonthShort && selectedDay.date === item.date;
                       return (
@@ -848,7 +848,7 @@ export default function App() {
                 </div>
 
                 {/* PILL REMINDER & DOSAGE TRACKER */}
-                <div className="mt-3 pt-3 border-t border-white/20 space-y-2">
+                <div className="mt-2 md:mt-3 pt-2.5 md:pt-3 border-t border-white/20 space-y-1.5 md:space-y-2">
                   <p className="text-[10px] font-bold text-zinc-300 uppercase tracking-wider">Pill Reminder &amp; Dosage Tracker</p>
                   <div className="relative z-50 overflow-visible flex gap-1.5">
                     <input
