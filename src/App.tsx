@@ -614,7 +614,7 @@ export default function App() {
             {/* Hero Section */}
             <button
               onClick={() => navigateTo('scan')}
-              className="text-left w-full mb-2 cursor-pointer group"
+              className="text-left w-full mb-0 cursor-pointer group"
             >
               <div className="flex flex-col items-start gap-2 text-left w-full mb-2">
                 <p className="text-[10px] md:text-xs font-bold tracking-wider text-zinc-400 uppercase">
@@ -647,7 +647,7 @@ export default function App() {
             </button>
 
             {/* Top Row: 3 Main Cards with High Roundness */}
-            <div className="w-full flex flex-col md:grid md:grid-cols-3 gap-4 md:gap-6 md:items-stretch">
+            <div className="w-full flex flex-col md:grid md:grid-cols-3 gap-3 md:gap-6 md:items-stretch">
 
               {/* Card 1: AI Scan Prescription (Mobile: 3rd | Desktop: 1st) */}
               <div className="w-full h-auto md:h-full flex flex-col justify-between bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl px-4 py-4 md:p-8 shadow-xl order-3 md:order-1 md:col-start-1 md:row-start-1">
