@@ -900,15 +900,11 @@ export default function App() {
                 <AlertTriangle className="w-10 h-10 md:w-12 md:h-12 mx-auto text-red-400" />
                 <p className="text-sm md:text-base text-red-300 font-semibold">Scan could not be completed</p>
                 <p className="text-xs text-red-200/80 break-words">{scanError}</p>
-                <div className="flex justify-center gap-3 pt-1">
-                  <button onClick={resetScan} className="px-5 py-2.5 md:px-6 md:py-3 bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-500 hover:to-teal-400 border border-blue-400/30 rounded-xl md:rounded-2xl text-xs font-bold uppercase tracking-wider transition shadow-lg shadow-blue-500/20 flex items-center gap-2">
-                    <RotateCcw className="w-4 h-4" />
-                    {language === 'en' ? 'Capture New' : 'نیا اسکین'}
-                  </button>
-                  <button onClick={openCameraModal} className="px-5 py-2.5 bg-zinc-800 hover:bg-zinc-700 border border-white/15 rounded-xl text-xs font-bold uppercase tracking-wider transition">
+                <div className="grid grid-cols-2 gap-3 pt-1">
+                  <button onClick={openCameraModal} className="py-3 bg-zinc-800 hover:bg-zinc-700 border border-white/15 rounded-xl md:rounded-2xl text-xs font-bold uppercase tracking-wider transition">
                     Retry Camera
                   </button>
-                  <button onClick={handleUploadClick} className="px-5 py-2.5 bg-white/10 hover:bg-white/20 border border-white/15 rounded-xl text-xs font-bold uppercase tracking-wider transition">
+                  <button onClick={handleUploadClick} className="py-3 bg-white/10 hover:bg-white/20 border border-white/15 rounded-xl md:rounded-2xl text-xs font-bold uppercase tracking-wider transition">
                     Retry Upload
                   </button>
                 </div>
