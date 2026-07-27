@@ -31,6 +31,8 @@ import {
   Clock,
   Mail,
   RotateCcw,
+  Plus,
+  Trash2,
 } from 'lucide-react';
 import NorixAIHeader from './components/NorixAIHeader';
 import AuthModal from './components/AuthModal';
@@ -63,6 +65,13 @@ interface ScanRecord {
   medicines: Medicine[];
   scannedAt: string;
   source: 'upload' | 'camera';
+}
+
+interface PillReminder {
+  id: string;
+  medicineName: string;
+  time: string;
+  dayKey: string;
 }
 
 function toRecord(result: PrescriptionScanResult, source: 'upload' | 'camera'): ScanRecord {
@@ -101,7 +110,7 @@ function buildWeekSchedule() {
 }
 
 const featureBadges = [
-  { icon: Zap, title: 'Active Salt Detection', desc: 'Instantly identifies API formula' },
+  { icon: Zap, title: 'Active Salt Detection', desc: 'Instantly identifies exact chemical formula' },
   { icon: Layers, title: 'Cheaper Alternatives', desc: 'Lowest-priced local equivalents' },
   { icon: CheckCircle2, title: 'Instant Dosage Verification', desc: 'Verified safety limits & guidelines' },
 ];
@@ -158,6 +167,17 @@ export default function App() {
     const today = new Date();
     return { short: months[today.getMonth()], date: today.getDate() };
   });
+  const [reminders, setReminders] = useState<PillReminder[]>(() => {
+    if (typeof window === 'undefined') return [];
+    try {
+      const raw = localStorage.getItem('noxai_reminders');
+      return raw ? (JSON.parse(raw) as PillReminder[]) : [];
+    } catch {
+      return [];
+    }
+  });
+  const [newReminderName, setNewReminderName] = useState('');
+  const [newReminderTime, setNewReminderTime] = useState('');
   const fileInputRef = useRef<HTMLInputElement>(null);
   const scanningRef = useRef(false);
 
@@ -177,6 +197,10 @@ export default function App() {
       // ignore malformed storage
     }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('noxai_reminders', JSON.stringify(reminders));
+  }, [reminders]);
 
   const isLoggedIn = user !== null;
   const userName = user?.name ?? 'Guest User';
@@ -292,6 +316,19 @@ export default function App() {
     if (fileInputRef.current) fileInputRef.current.value = '';
   };
 
+  const addReminder = () => {
+    const name = newReminderName.trim();
+    if (!name || !newReminderTime) return;
+    const key = `${selectedDay.short} ${selectedDay.date}`;
+    setReminders((prev) => [...prev, { id: `${Date.now()}`, medicineName: name, time: newReminderTime, dayKey: key }]);
+    setNewReminderName('');
+    setNewReminderTime('');
+  };
+
+  const removeReminder = (id: string) => {
+    setReminders((prev) => prev.filter((r) => r.id !== id));
+  };
+
   const handleUploadClick = () => {
     if (fileInputRef.current) fileInputRef.current.click();
   };
@@ -319,6 +356,8 @@ export default function App() {
   ];
 
   const weekSchedule = buildWeekSchedule();
+  const dayKey = `${selectedDay.short} ${selectedDay.date}`;
+  const dayReminders = reminders.filter((r) => r.dayKey === dayKey);
   const monthLabel = new Date().toLocaleDateString('en-US', {
     month: 'long',
     year: 'numeric',
@@ -548,7 +587,7 @@ export default function App() {
             >
               <div className="flex flex-col items-start gap-2 text-left w-full mb-2">
                 <p className="text-[10px] md:text-xs font-bold tracking-wider text-zinc-400 uppercase">
-                  CHOOSE THE BEST PLAN CONVENIENTLY
+                  SMART MEDICINE SAVINGS ASSISTANT
                 </p>
                 <div className="flex items-end justify-between gap-4 w-full">
                   <h2 className="block md:hidden text-2xl font-bold text-white max-w-md leading-tight group-hover:text-emerald-50 transition-colors">
@@ -580,10 +619,10 @@ export default function App() {
             <div className="w-full flex flex-col md:grid md:grid-cols-3 gap-4 md:gap-6 md:items-stretch">
 
               {/* Card 1: AI Scan Prescription (Mobile: 3rd | Desktop: 1st) */}
-              <div className="w-full h-auto md:h-full flex flex-col justify-between bg-zinc-900/90 border border-zinc-800 rounded-3xl p-4 md:p-8 shadow-xl order-3 md:order-1">
+              <div className="w-full h-auto md:h-full flex flex-col justify-between bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-4 md:p-8 shadow-xl order-3 md:order-1">
                 <div className="flex flex-col flex-1">
                   <div className="flex items-center justify-between mb-2 md:mb-4">
-                    <h2 className="text-xs font-bold tracking-wider text-zinc-400 uppercase">
+                    <h2 className="text-xs font-bold tracking-wider text-white uppercase">
                       AI Scan Prescription
                     </h2>
                     <span className="text-[10px] font-semibold bg-zinc-800 text-zinc-300 px-2.5 py-0.5 rounded-full border border-zinc-700">
@@ -595,7 +634,7 @@ export default function App() {
                     <button
                       onClick={openCameraModal}
                       disabled={loading}
-                      className="flex flex-col items-center justify-center py-5 md:py-8 px-3 bg-zinc-800/60 hover:bg-zinc-800 border border-zinc-700/60 rounded-2xl shadow-inner transition-all group disabled:opacity-50 disabled:cursor-not-allowed md:flex-1 md:min-h-[120px]"
+                      className="flex flex-col items-center justify-center py-5 md:py-8 px-3 bg-zinc-800/60 hover:bg-zinc-800 border border-zinc-700/60 hover:border-white/30 rounded-2xl shadow-inner hover:shadow-[0_0_15px_rgba(255,255,255,0.08)] transition-all duration-300 group disabled:opacity-50 disabled:cursor-not-allowed md:flex-1 md:min-h-[120px]"
                     >
                       <Camera className="w-7 h-7 md:w-10 md:h-10 text-zinc-200 mb-1.5 md:mb-2 group-hover:scale-110 transition-transform" />
                       <span className="text-[10px] md:text-xs font-bold tracking-wider text-zinc-200 uppercase">
@@ -605,7 +644,7 @@ export default function App() {
                     <button
                       onClick={handleUploadClick}
                       disabled={loading}
-                      className="flex flex-col items-center justify-center py-5 md:py-8 px-3 bg-zinc-800/60 hover:bg-zinc-800 border border-zinc-700/60 rounded-2xl shadow-inner transition-all group disabled:opacity-50 disabled:cursor-not-allowed md:flex-1 md:min-h-[120px]"
+                      className="flex flex-col items-center justify-center py-5 md:py-8 px-3 bg-zinc-800/60 hover:bg-zinc-800 border border-zinc-700/60 hover:border-white/30 rounded-2xl shadow-inner hover:shadow-[0_0_15px_rgba(255,255,255,0.08)] transition-all duration-300 group disabled:opacity-50 disabled:cursor-not-allowed md:flex-1 md:min-h-[120px]"
                     >
                       <Upload className="w-7 h-7 md:w-10 md:h-10 text-zinc-200 mb-1.5 md:mb-2 group-hover:scale-110 transition-transform" />
                       <span className="text-[10px] md:text-xs font-bold tracking-wider text-zinc-200 uppercase">
@@ -640,7 +679,7 @@ export default function App() {
               {/* Card 2: Smart Health Tips (Mobile: 2nd | Desktop: 2nd) */}
               <button
                 onClick={() => setActiveModal('tips')}
-                className="text-left w-full h-auto md:h-full flex flex-col justify-between bg-zinc-900/90 border border-zinc-800 rounded-3xl p-4 md:p-8 shadow-xl cursor-pointer md:cursor-default hover:border-zinc-700 transition order-2 md:order-2"
+                className="text-left w-full h-auto md:h-full flex flex-col justify-between bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-4 md:p-8 shadow-xl cursor-pointer md:cursor-default hover:border-zinc-700 transition order-2 md:order-2"
               >
                 <div>
                   <div className="flex items-center justify-between">
@@ -675,10 +714,10 @@ export default function App() {
               </button>
 
               {/* Card 3: Weekly Schedule (Mobile: 1st | Desktop: 3rd) */}
-              <div className="w-full h-auto md:h-full flex flex-col justify-between bg-zinc-900/90 border border-zinc-800 rounded-3xl p-4 md:p-8 shadow-xl order-1 md:order-3">
+              <div className="w-full h-auto md:h-full flex flex-col justify-between bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-4 md:p-8 shadow-xl order-1 md:order-3">
                 <div>
                   <div className="flex items-center justify-between mb-3 md:mb-4">
-                    <h2 className="text-xs font-bold tracking-wider text-zinc-400 uppercase">
+                    <h2 className="text-xs font-semibold tracking-wider text-white uppercase">
                       Weekly Schedule
                     </h2>
                     <button
@@ -764,9 +803,60 @@ export default function App() {
                   </div>
                 </div>
 
+                {/* PILL REMINDER & DOSAGE TRACKER */}
+                <div className="mt-3 pt-3 border-t border-zinc-800/80 space-y-2">
+                  <div className="flex items-center gap-1.5">
+                    <Pill className="w-3.5 h-3.5 text-emerald-400" />
+                    <p className="text-[10px] font-bold text-zinc-300 uppercase tracking-wider">Pill Reminder &amp; Dosage Tracker</p>
+                  </div>
+                  <div className="flex gap-1.5">
+                    <input
+                      type="text"
+                      value={newReminderName}
+                      onChange={(e) => setNewReminderName(e.target.value)}
+                      placeholder="Medicine name"
+                      className="flex-1 min-w-0 bg-zinc-800/60 border border-zinc-700/60 rounded-lg px-2.5 py-1.5 text-[11px] text-white placeholder-zinc-500 focus:outline-none focus:border-white/30"
+                    />
+                    <input
+                      type="time"
+                      value={newReminderTime}
+                      onChange={(e) => setNewReminderTime(e.target.value)}
+                      className="w-[72px] shrink-0 bg-zinc-800/60 border border-zinc-700/60 rounded-lg px-2 py-1.5 text-[11px] text-white focus:outline-none focus:border-white/30 [color-scheme:dark]"
+                    />
+                    <button
+                      type="button"
+                      onClick={addReminder}
+                      className="shrink-0 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700/60 hover:border-white/30 rounded-lg p-1.5 transition-all duration-300"
+                      aria-label="Add reminder"
+                    >
+                      <Plus className="w-3.5 h-3.5 text-zinc-200" />
+                    </button>
+                  </div>
+                  {dayReminders.length > 0 ? (
+                    <div className="space-y-1">
+                      {dayReminders.map((r) => (
+                        <div key={r.id} className="flex items-center justify-between bg-zinc-800/40 border border-zinc-800/80 rounded-lg px-2.5 py-1.5">
+                          <div className="flex items-center gap-1.5 min-w-0">
+                            <Clock className="w-3 h-3 text-zinc-400 shrink-0" />
+                            <span className="text-[11px] text-zinc-200 truncate">{r.medicineName}</span>
+                          </div>
+                          <div className="flex items-center gap-2 shrink-0">
+                            <span className="text-[10px] text-zinc-400 font-medium">{r.time}</span>
+                            <button type="button" onClick={() => removeReminder(r.id)} className="text-zinc-500 hover:text-red-400 transition" aria-label="Delete reminder">
+                              <Trash2 className="w-3 h-3" />
+                            </button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="text-[10px] text-zinc-500">No reminders for {selectedDay.short} {selectedDay.date}. Add one above.</p>
+                  )}
+                </div>
+
                 <div className="hidden md:flex pt-3 border-t border-zinc-800/80 items-center justify-between text-[11px] mt-3">
                   <span className="text-zinc-400">Selected: <strong className="text-zinc-200">{selectedDay.short} {selectedDay.date}, {currentYear}</strong></span>
-                  <span className="text-emerald-400 font-medium">Active Day</span>
+                  <span className="text-emerald-400 font-medium">{dayReminders.length} Reminder{dayReminders.length !== 1 ? 's' : ''}</span>
                 </div>
               </div>
 

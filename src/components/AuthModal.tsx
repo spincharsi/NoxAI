@@ -168,7 +168,7 @@ export default function AuthModal({ onClose, onSuccess, initialMode = 'signin' }
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="e.g. Mehmood Lasan"
+                  placeholder="e.g. Ahmed Raza"
                   autoFocus={mode === 'signup'}
                   className={`${fieldClass} ${errors.name ? errorFieldBorder : okFieldBorder}`}
                 />
