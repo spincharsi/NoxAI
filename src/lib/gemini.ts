@@ -122,10 +122,9 @@ export async function scanPrescription(
 
   const ai = new GoogleGenAI({ apiKey });
 
-  let text = '';
-  try {
-    const response = await ai.models.generateContent({
-      model: 'gemini-1.5-flash',
+  const callModel = async (model: string) =>
+    ai.models.generateContent({
+      model,
       contents: [
         { text: GEMINI_PROMPT },
         { inlineData: { mimeType, data: base64 } },
@@ -136,6 +135,19 @@ export async function scanPrescription(
         responseMimeType: 'application/json',
       },
     });
+
+  let text = '';
+  try {
+    let response: Awaited<ReturnType<typeof callModel>>;
+    try {
+      response = await callModel('gemini-3.1-flash-lite');
+    } catch (primaryErr) {
+      const primaryMsg =
+        primaryErr instanceof Error ? primaryErr.message : String(primaryErr);
+      const isNotFound = /404|NOT_FOUND|not.?found|not_found/i.test(primaryMsg);
+      if (!isNotFound) throw primaryErr;
+      response = await callModel('gemini-2.5-flash');
+    }
     text = response.text ?? '';
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
