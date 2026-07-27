@@ -1002,7 +1002,7 @@ export default function App() {
             {currentScan && !loading ? (
               <div className="space-y-4">
                 {/* DOCTOR DIAGNOSIS CARD */}
-                <div className="bg-white/[0.05] backdrop-blur-2xl border border-white/10 rounded-[24px] p-5 shadow-xl flex items-center justify-between gap-3">
+                <div className="bg-white/[0.05] backdrop-blur-2xl border border-white/10 rounded-[24px] px-5 py-3.5 md:p-5 shadow-xl flex items-center justify-between gap-3">
                   <div className="flex items-center gap-3">
                     <div className="p-2.5 bg-white/[0.04] border border-white/10 rounded-xl text-zinc-400 shrink-0">
                       <FileText className="w-6 h-6 text-zinc-400" />
@@ -1023,7 +1023,7 @@ export default function App() {
 
                 {/* PER-MEDICATION CARDS */}
                 {currentScan.medicines.map((med, index) => (
-                  <div key={index} className="bg-white/[0.05] backdrop-blur-2xl border border-white/10 rounded-[26px] p-5 md:p-6 space-y-2.5 shadow-xl">
+                  <div key={index} className="bg-white/[0.05] backdrop-blur-2xl border border-white/10 rounded-[26px] px-5 py-3.5 md:p-6 space-y-2.5 shadow-xl">
                     <div className="flex justify-between items-start border-b border-white/10 pb-3 gap-3">
                       <div className="flex items-center gap-2.5">
                         <Pill className="w-5 h-5 text-white shrink-0" />
@@ -1077,12 +1077,12 @@ export default function App() {
                 ))}
               </div>
             ) : loading ? (
-              <div className="bg-white/[0.05] backdrop-blur-2xl border border-white/10 rounded-[26px] p-8 text-center space-y-4">
+              <div className="bg-white/[0.05] backdrop-blur-2xl border border-white/10 rounded-[26px] px-8 py-5 md:py-8 text-center space-y-4">
                 <Loader2 className="w-10 h-10 mx-auto text-zinc-300 animate-spin" />
                 <p className="text-xs md:text-sm text-zinc-400">Analyzing your prescription...</p>
               </div>
             ) : scanError ? (
-              <div className="bg-red-500/10 border border-red-500/20 rounded-[26px] md:rounded-[28px] p-6 md:p-8 text-center space-y-4">
+              <div className="bg-red-500/10 border border-red-500/20 rounded-[26px] md:rounded-[28px] px-6 py-4 md:p-8 text-center space-y-4">
                 <AlertTriangle className="w-10 h-10 md:w-12 md:h-12 mx-auto text-red-400" />
                 <p className="text-sm md:text-base text-red-300 font-semibold">Scan could not be completed</p>
                 <p className="text-xs text-red-200/80 break-words">{scanError}</p>
@@ -1096,7 +1096,7 @@ export default function App() {
                 </div>
               </div>
             ) : (
-              <div className="bg-white/[0.05] backdrop-blur-2xl border border-white/10 rounded-[26px] md:rounded-[28px] p-8 md:p-12 text-center space-y-4 md:space-y-5">
+              <div className="bg-white/[0.05] backdrop-blur-2xl border border-white/10 rounded-[26px] md:rounded-[28px] px-8 py-5 md:p-12 text-center space-y-4 md:space-y-5">
                 <Camera className="w-12 h-12 md:w-16 md:h-16 mx-auto text-zinc-500" />
                 <p className="text-xs md:text-sm text-zinc-400">No active scan yet. Use the camera or upload a prescription file to begin.</p>
                 <div className="flex justify-center gap-3 pt-2">
@@ -1117,7 +1117,7 @@ export default function App() {
             )}
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-white/[0.05] backdrop-blur-2xl border border-white/10 rounded-[22px] md:rounded-[24px] p-4 md:p-5 space-y-2 md:space-y-3">
+              <div className="bg-white/[0.05] backdrop-blur-2xl border border-white/10 rounded-[22px] md:rounded-[24px] px-4 py-3 md:p-5 space-y-2 md:space-y-3">
                 <div className="flex items-center justify-between">
                   <h3 className="text-xs font-bold text-zinc-200 uppercase tracking-wider">Formula Accuracy Guide</h3>
                   <ShieldCheck className="w-4 h-4 md:w-5 md:h-5 text-white" />
@@ -1130,7 +1130,7 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="bg-white/[0.05] backdrop-blur-2xl border border-white/10 rounded-[22px] md:rounded-[24px] p-4 md:p-5 space-y-2 md:space-y-3">
+              <div className="bg-white/[0.05] backdrop-blur-2xl border border-white/10 rounded-[22px] md:rounded-[24px] px-4 py-3 md:p-5 space-y-2 md:space-y-3">
                 <h3 className="text-xs font-bold text-zinc-200 uppercase tracking-wider">Recent Scanned Salts</h3>
                 {history.length === 0 ? (
                   <div className="space-y-2 text-xs text-zinc-300">
