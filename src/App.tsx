@@ -650,9 +650,9 @@ export default function App() {
             <div className="w-full flex flex-col md:grid md:grid-cols-3 gap-4 md:gap-6 md:items-stretch">
 
               {/* Card 1: AI Scan Prescription (Mobile: 3rd | Desktop: 1st) */}
-              <div className="w-full h-auto md:h-full flex flex-col justify-between bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl px-4 py-1 md:p-8 shadow-xl order-3 md:order-1 md:col-start-1 md:row-start-1">
+              <div className="w-full h-auto md:h-full flex flex-col justify-between bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl px-4 py-0.5 md:p-8 shadow-xl order-3 md:order-1 md:col-start-1 md:row-start-1">
                 <div className="flex flex-col flex-1">
-                  <div className="flex items-center justify-between mb-2 md:mb-4">
+                  <div className="flex items-center justify-between mb-1 md:mb-4">
                     <h2 className="text-xs font-bold tracking-wider text-white uppercase">
                       AI Scan Prescription
                     </h2>
@@ -661,7 +661,7 @@ export default function App() {
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-2 md:grid-cols-1 gap-3 md:gap-4 my-2 md:my-3 md:flex-1 relative">
+                  <div className="grid grid-cols-2 md:grid-cols-1 gap-3 md:gap-4 my-1 md:my-3 md:flex-1 relative">
                     <button
                       onClick={openCameraModal}
                       disabled={loading}
@@ -692,7 +692,7 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="space-y-1.5 pt-2.5 border-t border-white/20 mt-2 md:mt-3 md:pt-3 md:space-y-2">
+                <div className="space-y-1.5 pt-1.5 border-t border-white/20 mt-1 md:mt-3 md:pt-3 md:space-y-2">
                   {featureBadges.map((f) => {
                     const Icon = f.icon;
                     return (
