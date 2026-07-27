@@ -889,14 +889,6 @@ export default function App() {
                     </div>
                   </div>
                 ))}
-
-                <button
-                  onClick={resetScan}
-                  className="w-full py-3.5 md:py-4 bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-500 hover:to-teal-400 border border-blue-400/30 rounded-2xl text-xs font-bold uppercase tracking-wider transition shadow-lg shadow-blue-500/20 flex items-center justify-center gap-2"
-                >
-                  <RotateCcw className="w-4 h-4" />
-                  {language === 'en' ? 'Scan Another / Capture New' : 'نیا نسخہ اسکین کریں'}
-                </button>
               </div>
             ) : loading ? (
               <div className="bg-white/[0.05] backdrop-blur-2xl border border-white/10 rounded-[26px] p-8 text-center space-y-4">
@@ -984,12 +976,21 @@ export default function App() {
               </div>
             </div>
 
-            <button
-              onClick={() => navigateTo('home')}
-              className="w-full py-3.5 md:py-4 bg-white/10 hover:bg-white/20 border border-white/15 rounded-2xl text-xs font-bold uppercase tracking-wider transition"
-            >
-              Back to Home Dashboard
-            </button>
+            <div className="space-y-3">
+              <button
+                onClick={resetScan}
+                className="w-full py-3.5 md:py-4 bg-blue-900/30 hover:bg-blue-800/50 border border-blue-500/25 rounded-2xl text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-2 text-blue-100"
+              >
+                <RotateCcw className="w-4 h-4" />
+                {language === 'en' ? 'Capture New / Scan Another Medicine' : 'نیا اسکین کریں'}
+              </button>
+              <button
+                onClick={() => navigateTo('home')}
+                className="w-full py-3.5 md:py-4 bg-white/10 hover:bg-white/20 border border-white/15 rounded-2xl text-xs font-bold uppercase tracking-wider transition"
+              >
+                Back to Home Dashboard
+              </button>
+            </div>
           </div>
         )}
 
