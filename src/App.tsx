@@ -868,7 +868,7 @@ export default function App() {
                           className="fixed inset-0 z-[99]"
                           onClick={() => setShowTimePicker(false)}
                         />
-                        <div className="absolute top-full left-0 w-full mt-2 z-[9999] bg-[#181b25]/95 backdrop-blur-2xl border border-white/10 shadow-2xl text-white rounded-2xl p-3">
+                        <div className="absolute top-full left-0 w-full mt-2 z-[9999] bg-[#181b25]/95 backdrop-blur-2xl border border-white/15 shadow-2xl text-white rounded-2xl p-3">
                           <div className="flex items-center justify-center gap-1.5">
                             <select
                               value={pickerHour}
