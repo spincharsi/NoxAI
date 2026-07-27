@@ -622,13 +622,13 @@ export default function App() {
                 </p>
                 <div className="flex items-end justify-between gap-4 w-full">
                   <h2 className="block md:hidden text-2xl font-bold text-white max-w-md leading-tight group-hover:text-blue-50 transition-colors">
-                    <span className="bg-gradient-to-r from-white via-slate-200 to-gray-400 bg-clip-text text-transparent font-black drop-shadow-[0_2px_10px_rgba(255,255,255,0.2)]">AI</span>-Powered<br />
+                    <span className="bg-gradient-to-r from-slate-200 via-slate-400 to-slate-600 bg-clip-text text-transparent font-black drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)]">AI</span>-Powered<br />
                     Medicine Salt<br />
                     Comparison Assistant
                   </h2>
                   <h2 className="hidden md:flex md:flex-col md:gap-1.5 leading-tight group-hover:text-blue-50 transition-colors">
                     <span className="text-xl md:text-3xl font-bold text-zinc-200 tracking-tight">
-                      <span className="bg-gradient-to-r from-white via-slate-200 to-gray-400 bg-clip-text text-transparent font-black drop-shadow-[0_2px_10px_rgba(255,255,255,0.2)]">AI</span>-Powered Medicine
+                      <span className="bg-gradient-to-r from-slate-200 via-slate-400 to-slate-600 bg-clip-text text-transparent font-black drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)]">AI</span>-Powered Medicine
                     </span>
                     <span className="text-2xl md:text-4xl font-bold text-white tracking-tight">
                       Salt Comparison Assistant
@@ -985,7 +985,7 @@ export default function App() {
               <h2 className="text-base md:text-lg font-bold uppercase tracking-wider text-zinc-200">
                 {language === 'en' ? (
                   <span>
-                    <span className="bg-gradient-to-r from-white via-slate-200 to-gray-400 bg-clip-text text-transparent font-black drop-shadow-[0_2px_10px_rgba(255,255,255,0.2)]">AI</span>{' '}
+                    <span className="bg-gradient-to-r from-slate-200 via-slate-400 to-slate-600 bg-clip-text text-transparent font-black drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)]">AI</span>{' '}
                     MEDICINE SCANNER
                   </span>
                 ) : 'نسخہ (پرچی) کا تجزیہ'}
