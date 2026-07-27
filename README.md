@@ -1,4 +1,4 @@
-# Nexora — AI Prescription Scanner & Generic Medicine Finder
+# NoxAI — AI Prescription Scanner & Generic Medicine Finder
 
 A mobile-first, deep-blue dark-mode web app that scans prescriptions with Google Gemini Vision and compares branded medicines against low-cost generic alternatives available in Pakistan — showing exact prices and percentage savings.
 
