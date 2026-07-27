@@ -878,50 +878,39 @@ export default function App() {
                           className="fixed inset-0 z-[99]"
                           onClick={() => setShowTimePicker(false)}
                         />
-                        <div className="absolute top-full left-0 w-full max-w-[280px] mt-2 z-[9999] bg-[#181b25] backdrop-blur-2xl border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.95)] rounded-2xl p-4 text-white">
-                          <div className="flex items-center justify-between mb-3 border-b border-white/10 pb-2">
-                            <span className="text-sm font-semibold text-gray-300">Set Reminder Time</span>
-                            <button
-                              type="button"
-                              onClick={() => setShowTimePicker(false)}
-                              className="text-gray-400 hover:text-white text-xs px-2 py-1 rounded bg-white/5 transition"
-                              aria-label="Close time picker"
-                            >
-                              ✕
-                            </button>
-                          </div>
-                          <div className="grid grid-cols-3 gap-2 mb-3">
+                        <div className="absolute top-full left-0 right-0 w-full mt-2 z-[9999] bg-[#1e2230] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.95)] rounded-2xl p-3 text-white">
+                          <div className="grid grid-cols-3 gap-2">
                             <select
                               value={pickerHour}
                               onChange={(e) => setPickerHour(Number(e.target.value))}
-                              className="appearance-none bg-white/5 border border-white/10 rounded-xl p-3 text-lg font-bold text-white hover:bg-white/10 transition-all focus:outline-none focus:ring-0 text-center cursor-pointer"
+                              className="appearance-none bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 text-white rounded-xl p-2.5 text-base font-bold text-center cursor-pointer focus:outline-none focus:ring-0 transition"
                             >
                               {Array.from({ length: 12 }, (_, i) => i + 1).map((h) => (
-                                <option key={h} value={h} className="bg-[#181b25]">{String(h).padStart(2, '0')}</option>
+                                <option key={h} value={h} className="bg-[#1e2230]">{String(h).padStart(2, '0')}</option>
                               ))}
                             </select>
                             <select
                               value={pickerMinute}
                               onChange={(e) => setPickerMinute(Number(e.target.value))}
-                              className="appearance-none bg-white/5 border border-white/10 rounded-xl p-3 text-lg font-bold text-white hover:bg-white/10 transition-all focus:outline-none focus:ring-0 text-center cursor-pointer"
+                              className="appearance-none bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 text-white rounded-xl p-2.5 text-base font-bold text-center cursor-pointer focus:outline-none focus:ring-0 transition"
                             >
                               {[0, 15, 30, 45].map((mm) => (
-                                <option key={mm} value={mm} className="bg-[#181b25]">{String(mm).padStart(2, '0')}</option>
+                                <option key={mm} value={mm} className="bg-[#1e2230]">{String(mm).padStart(2, '0')}</option>
                               ))}
                             </select>
                             <select
                               value={pickerPeriod}
                               onChange={(e) => setPickerPeriod(e.target.value as 'AM' | 'PM')}
-                              className="appearance-none bg-white/5 border border-white/10 rounded-xl p-3 text-lg font-bold text-white hover:bg-white/10 transition-all focus:outline-none focus:ring-0 text-center cursor-pointer"
+                              className="appearance-none bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 text-white rounded-xl p-2.5 text-base font-bold text-center cursor-pointer focus:outline-none focus:ring-0 transition"
                             >
-                              <option value="AM" className="bg-[#181b25]">AM</option>
-                              <option value="PM" className="bg-[#181b25]">PM</option>
+                              <option value="AM" className="bg-[#1e2230]">AM</option>
+                              <option value="PM" className="bg-[#1e2230]">PM</option>
                             </select>
                           </div>
                           <button
                             type="button"
                             onClick={confirmTime}
-                            className="w-full py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl shadow-lg transition-all text-center mt-3"
+                            className="w-full mt-2 py-2 bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 text-white font-semibold rounded-xl text-center transition"
                           >
                             DONE
                           </button>
