@@ -738,6 +738,10 @@ export default function App() {
                       <p className="font-semibold text-zinc-200 text-[11px] mb-0.5">6. Doctor Consultation</p>
                       <p className="text-[10px] text-zinc-400 leading-normal">Always verify dosage changes with a healthcare professional.</p>
                     </div>
+                    <div className="hidden lg:block bg-white/5 border border-white/10 rounded-xl p-3.5 mb-2.5 transition-all hover:bg-white/[0.07]">
+                      <p className="font-semibold text-zinc-200 text-[11px] mb-0.5">7. Counterfeit Medication Check</p>
+                      <p className="text-[10px] text-zinc-400 leading-normal">Purchase medications exclusively from licensed pharmacies and verify holographic security stamps on packaging.</p>
+                    </div>
                   </div>
                 </div>
 
