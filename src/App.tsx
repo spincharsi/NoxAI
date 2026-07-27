@@ -1032,37 +1032,34 @@ export default function App() {
                         <Pill className="w-5 h-5 text-white shrink-0" />
                         <div>
                           <h4 className="font-bold text-white text-base md:text-lg">{med.original}</h4>
-                          <span className="text-[10px] text-zinc-400 uppercase tracking-wider block">Prescribed Brand</span>
+                          <span className="text-[10px] text-zinc-400 uppercase tracking-wider block">
+                            {med.formula} &middot; <span className="text-zinc-300">{med.origPrice}</span>
+                          </span>
                         </div>
                       </div>
-                      <span className="text-xs text-zinc-400 line-through font-semibold shrink-0">{med.origPrice}</span>
                     </div>
 
-                    {(language === 'en' ? med.purposeEn : med.purposeUr) && (
-                      <div className="bg-white/5 border border-white/10 rounded-xl p-3.5 space-y-0.5">
-                        <p className="text-[10px] text-zinc-400 uppercase font-bold tracking-wider flex items-center gap-1.5">
-                          <Zap className="w-3.5 h-3.5 text-white" />
-                          {language === 'en' ? 'What it is used for:' : 'دوائی کا مقصد (یہ کس لیے ہے):'}
-                        </p>
-                        <p className="text-xs md:text-sm text-zinc-200 font-medium leading-relaxed">
-                          {language === 'en' ? med.purposeEn : med.purposeUr}
-                        </p>
-                      </div>
-                    )}
+                    <div className="bg-white/5 border border-white/10 text-gray-200 rounded-xl p-3 space-y-0.5">
+                      <p className="text-[10px] text-zinc-400 uppercase font-bold tracking-wider flex items-center gap-1.5">
+                        <Zap className="w-3.5 h-3.5 text-white" />
+                        {language === 'en' ? 'What it is used for:' : 'دوائی کا مقصد (یہ کس لیے ہے):'}
+                      </p>
+                      <p className="text-xs md:text-sm text-gray-200 font-medium leading-relaxed">
+                        {(language === 'en' ? med.purposeEn : med.purposeUr) || (language === 'en' ? 'Use information not available for this medicine.' : 'اس دوائی کے لیے معلومات دستیاب نہیں۔')}
+                      </p>
+                    </div>
 
-                    {(language === 'en' ? med.dosageEn : med.dosageUr) && (
-                      <div className="bg-white/[0.03] border border-white/5 rounded-2xl p-2.5 space-y-0.5">
-                        <p className="text-[10px] text-zinc-400 uppercase font-bold tracking-wider flex items-center gap-1.5">
-                          <Clock className="w-3.5 h-3.5 text-white" />
-                          {language === 'en' ? 'Dosage & Instructions:' : 'خوراک کا طریقہ کار:'}
-                        </p>
-                        <p className="text-xs md:text-sm text-zinc-200 font-medium">
-                          {language === 'en' ? med.dosageEn : med.dosageUr}
-                        </p>
-                      </div>
-                    )}
+                    <div className="bg-white/5 border border-white/10 text-gray-200 rounded-xl p-3 space-y-0.5">
+                      <p className="text-[10px] text-zinc-400 uppercase font-bold tracking-wider flex items-center gap-1.5">
+                        <Clock className="w-3.5 h-3.5 text-white" />
+                        {language === 'en' ? 'Dosage & Instructions:' : 'خوراک کا طریقہ کار:'}
+                      </p>
+                      <p className="text-xs md:text-sm text-gray-200 font-medium leading-relaxed">
+                        {(language === 'en' ? med.dosageEn : med.dosageUr) || (language === 'en' ? 'Follow your doctor\'s prescription instructions.' : 'اپنے ڈاکٹر کے نسخے کی ہدایات پر عمل کریں۔')}
+                      </p>
+                    </div>
 
-                    <div className="bg-blue-500/10 border border-blue-400/20 text-blue-100 rounded-xl p-3.5 flex justify-between items-center shadow-lg gap-3">
+                    <div className="bg-blue-500/10 border border-blue-400/20 text-blue-100 rounded-xl p-3 flex justify-between items-center shadow-lg gap-3">
                       <div className="space-y-0.5">
                         <p className="text-[10px] text-white font-bold uppercase tracking-wider">
                           {language === 'en' ? 'Cheaper Generic Salt Equivalent:' : 'سستا اور بااعتماد متبادل:'}
