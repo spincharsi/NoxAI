@@ -1,49 +1,30 @@
-# NoxAI — AI-Powered Medicine Salt Comparison Assistant
+# NoxAI — AI Prescription Scanner & Generic Medicine Finder
 
-A mobile-first, deep-grey dark-mode web application designed to help users scan medical prescriptions using **Google Gemini Vision**, analyze active pharmaceutical ingredients (APIs), and compare expensive branded medicines against verified, low-cost generic alternatives available in Pakistan—showing exact price comparisons and percentage savings.
+A mobile-first, deep-blue dark-mode web app that scans prescriptions with Google Gemini Vision and compares branded medicines against low-cost generic alternatives available in Pakistan — showing exact prices and percentage savings.
 
-##  Live Demo & App URL
+## Live Demo & App Screenshots
 
-You can test the live deployed application directly here:
+**Live App URL:** [https://nox-ai-mu.vercel.app](https://nox-ai-mu.vercel.app)
 
-**🔗 Clickable Live URL:** [https://nox-ai-mu.vercel.app](https://nox-ai-mu.vercel.app)
-
-```bash
-https://nox-ai-mu.vercel.app
-```
-##  App Screenshots & UI Demonstration
-
----
-
-| Main Dashboard | Scan Interface | AI Analysis Result |
+| Scan Interface | AI Analysis Result | Savings Dashboard |
 | :---: | :---: | :---: |
-| ![Dashboard](./dashboard.png) | ![Scan Interface](./scan.png) | ![AI Result](./result.png) |
-
-| History Page | Smart Health Tips | Profile Page |
-| :---: | :---: | :---: |
-| ![Time Picker](./history.png) | ![Health Tips](./tips.png) | ![Profile](./profile.png) |
+| ![Scan](./screenshots/scan.png) | ![Result](./screenshots/result.png) | ![Analytics](./screenshots/analytics.png) |
 
 ## What It Does
 
-1. AI Prescription Scanner (OCR V2): Upload a photo or PDF of a prescription via the interactive central dropzone. Google Gemini Vision instantly extracts text, identifies handwriting, and diagnoses the condition.
-
-2. Smart Salt & Price Comparison: Maps expensive prescribed brand names (e.g., Panadol 500mg - PKR 280) directly to their certified, affordable generic formula equivalents (e.g., Calpol - PKR 150), calculating exact PKR savings and percentage reductions.
-
-3. Interactive Savings Dashboard: Visualizes total financial savings, medicine breakdown analysis, and animated price-impact metrics.
-
-4. Weekly Dosage & Pill Reminder: A interactive 7-day pill tracking calendar featuring custom glassmorphic time-picker popups for morning/evening dosage alerts.
-
-5. Smart Health Tips & Guidelines: Built-in expert guidelines on generic medicine safety, active formula verification, and counterfeit medication checks.
+1. **Scan a prescription** — upload a photo or PDF via the central dropzone.
+2. **AI extraction** — Google Gemini Vision reads the prescription and returns structured data: the diagnosed condition plus every medicine with brand, formula, original price, cheapest generic alternative, generic price, and savings percentage.
+3. **See your savings** — an analytics dashboard shows total savings, medicine analysis, an animated price-impact bar chart, and a detailed list of generic alternatives with green "% Savings" badges.
 
 ## Design
 
-- Deep-Grey & Dark-Mode Theme: Built with solid dark-grey backgrounds (#181b25 & #1e2230), subtle white borders (border-white/15), and smooth rounded-2xl glassmorphism accents.
-
-- Header & Navigation: Sleek top header featuring the geometric NoxAI logo, notification bell, and user profile, paired with a responsive fixed bottom navigation bar for mobile users.
-
-- Fully Responsive: Perfectly optimized to prevent vertical scrolling on mobile devices while maintaining an evenly aligned 3-column multi-card grid on desktop (lg:) screens.
-
-- High-Contrast Styling: Features an eye-catching golden-grey metallic gradient on the "AI" branding text for maximum visual hierarchy.
+- **Deep blue aesthetic** — `#0B1229` background with card-based modular layout, teal and blue accent glows.
+- **Top header** — integrated deep-blue bar with a hamburger icon, the Nexora geometric logo and name on the left, and a notification bell + user profile circle on the right.
+- **Hero card** — "AI-POWERED GENERIC FINDER" (teal on blue), the main heading, sub-heading, and three metric cards: 100% Safe, 2s Scan Time, 65% Avg. Savings.
+- **Prescription Scanner** — large central dropzone with an upload icon and a blue "Photo or scan supported" button inside, plus a prominent "SCAN PRESCRIPTION" button below.
+- **Analytics Dashboard** — SAVINGS SUMMARY, MEDICINE ANALYSIS, and PRICE IMPACT cards with visual charts that populate after scanning.
+- **Top Alternative Choices** — a large card listing each medicine as original brand → formula → generic alternative, with a highlighted savings badge.
+- **Bottom navigation bar** — fixed deep-blue bar with Home, Scan, Analytics, History, and Account.
 
 ## Tech Stack
 
@@ -99,7 +80,7 @@ src/
 ├── types.ts                     # TypeScript interfaces
 ├── App.tsx                      # Mobile-first layout
 ├── main.tsx                     # React entry point
-└── index.css                    # Tailwind + Noxai theme utilities
+└── index.css                    # Tailwind + Nexora theme utilities
 ```
 
 ## Gemini API Response Schema
@@ -124,5 +105,4 @@ The scan logic sends the prescription image to Gemini with a strict prompt enfor
 
 ## Disclaimer
 
-NoxAI is for **informational and demonstration purposes only**. It does not provide medical advice. Always consult a licensed healthcare professional before switching medications. Prices are estimates and may not reflect current market prices.
-
+Nexora is for **informational and demonstration purposes only**. It does not provide medical advice. Always consult a licensed healthcare professional before switching medications. Prices are estimates and may not reflect current market prices.
