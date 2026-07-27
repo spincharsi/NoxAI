@@ -598,7 +598,7 @@ export default function App() {
       </div>
 
       {/* MAIN CONTENT */}
-      <main className="w-full max-w-[1600px] mx-auto px-4 lg:px-8 py-4 flex flex-col gap-6">
+      <main className="w-full max-w-[1600px] mx-auto px-4 lg:px-6 py-4 flex flex-col gap-4">
         <input
           ref={fileInputRef}
           type="file"
@@ -622,13 +622,13 @@ export default function App() {
                 </p>
                 <div className="flex items-end justify-between gap-4 w-full">
                   <h2 className="block md:hidden text-2xl font-bold text-white max-w-md leading-tight group-hover:text-blue-50 transition-colors">
-                    <span className="bg-gradient-to-r from-amber-400 via-yellow-200 to-amber-500 bg-clip-text text-transparent font-extrabold drop-shadow-[0_2px_10px_rgba(245,158,11,0.5)]">AI</span>-Powered<br />
+                    <span className="bg-gradient-to-r from-slate-100 via-slate-300 to-slate-500 bg-clip-text text-transparent font-black drop-shadow-[0_2px_10px_rgba(255,255,255,0.15)]">AI</span>-Powered<br />
                     Medicine Salt<br />
                     Comparison Assistant
                   </h2>
                   <h2 className="hidden md:flex md:flex-col md:gap-1.5 leading-tight group-hover:text-blue-50 transition-colors">
                     <span className="text-xl md:text-3xl font-bold text-zinc-200 tracking-tight">
-                      <span className="bg-gradient-to-r from-amber-400 via-yellow-200 to-amber-500 bg-clip-text text-transparent font-extrabold drop-shadow-[0_2px_10px_rgba(245,158,11,0.5)]">AI</span>-Powered Medicine
+                      <span className="bg-gradient-to-r from-slate-100 via-slate-300 to-slate-500 bg-clip-text text-transparent font-black drop-shadow-[0_2px_10px_rgba(255,255,255,0.15)]">AI</span>-Powered Medicine
                     </span>
                     <span className="text-2xl md:text-4xl font-bold text-white tracking-tight">
                       Salt Comparison Assistant
@@ -953,7 +953,7 @@ export default function App() {
             </div>
 
             {/* Bottom Row: 3 Mini Cards (Desktop only) */}
-            <div className="hidden lg:grid lg:grid-cols-3 gap-6 mt-6 w-full">
+            <div className="hidden lg:grid lg:grid-cols-3 gap-6 mt-2 lg:mt-3 w-full">
 
               <div className="w-full flex items-center gap-4 bg-zinc-900/90 border border-zinc-800 rounded-3xl p-5 shadow-lg">
                 <div className="p-3 bg-zinc-800 rounded-2xl border border-zinc-700/50 shrink-0">
@@ -988,7 +988,7 @@ export default function App() {
               <h2 className="text-base md:text-lg font-bold uppercase tracking-wider text-zinc-200">
                 {language === 'en' ? (
                   <span>
-                    <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent font-black drop-shadow-[0_2px_15px_rgba(59,130,246,0.5)]">AI</span>{' '}
+                    <span className="bg-gradient-to-r from-slate-100 via-slate-300 to-slate-500 bg-clip-text text-transparent font-black drop-shadow-[0_2px_10px_rgba(255,255,255,0.15)]">AI</span>{' '}
                     MEDICINE SCANNER
                   </span>
                 ) : 'نسخہ (پرچی) کا تجزیہ'}
