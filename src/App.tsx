@@ -706,7 +706,6 @@ export default function App() {
                 <div>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <Lightbulb className="w-4 h-4 md:w-5 md:h-5 text-zinc-300" />
                       <div>
                         <h2 className="text-xs font-bold tracking-wider text-zinc-200 uppercase">
                           Smart Health Tips
@@ -832,7 +831,7 @@ export default function App() {
                 {/* PILL REMINDER & DOSAGE TRACKER */}
                 <div className="mt-3 pt-3 border-t border-white/20 space-y-2">
                   <p className="text-[10px] font-bold text-zinc-300 uppercase tracking-wider">Pill Reminder &amp; Dosage Tracker</p>
-                  <div className="flex gap-1.5">
+                  <div className="relative flex gap-1.5">
                     <input
                       type="text"
                       value={newReminderName}
@@ -840,7 +839,7 @@ export default function App() {
                       placeholder="Medicine name"
                       className="flex-1 min-w-0 bg-zinc-800/60 border border-zinc-700/60 rounded-xl px-2.5 py-1.5 text-[11px] text-white placeholder-zinc-500 focus:outline-none focus:border-white/30"
                     />
-                    <div className="relative shrink-0">
+                    <div className="shrink-0">
                       <button
                         type="button"
                         onClick={openTimePicker}
@@ -849,52 +848,6 @@ export default function App() {
                         <Clock className="w-3.5 h-3.5" />
                         <span className="text-[11px] font-medium">{newReminderTime || 'Set time'}</span>
                       </button>
-                      {showTimePicker && (
-                        <>
-                          <div
-                            className="fixed inset-0 z-[99]"
-                            onClick={() => setShowTimePicker(false)}
-                          />
-                          <div className="absolute bottom-full mb-2 left-0 z-[100] rounded-2xl border border-white/15 shadow-2xl bg-gray-900/95 backdrop-blur-xl p-3 w-48">
-                            <div className="flex items-center justify-center gap-1.5">
-                              <select
-                                value={pickerHour}
-                                onChange={(e) => setPickerHour(Number(e.target.value))}
-                                className="bg-gray-900/95 backdrop-blur-xl border border-white/15 shadow-2xl text-white text-xs rounded-xl px-2 py-1.5 hover:bg-white/10 focus:outline-none"
-                              >
-                                {Array.from({ length: 12 }, (_, i) => i + 1).map((h) => (
-                                  <option key={h} value={h} className="bg-gray-900">{String(h).padStart(2, '0')}</option>
-                                ))}
-                              </select>
-                              <span className="text-white text-xs">:</span>
-                              <select
-                                value={pickerMinute}
-                                onChange={(e) => setPickerMinute(Number(e.target.value))}
-                                className="bg-gray-900/95 backdrop-blur-xl border border-white/15 shadow-2xl text-white text-xs rounded-xl px-2 py-1.5 hover:bg-white/10 focus:outline-none"
-                              >
-                                {[0, 15, 30, 45].map((mm) => (
-                                  <option key={mm} value={mm} className="bg-gray-900">{String(mm).padStart(2, '0')}</option>
-                                ))}
-                              </select>
-                              <select
-                                value={pickerPeriod}
-                                onChange={(e) => setPickerPeriod(e.target.value as 'AM' | 'PM')}
-                                className="bg-gray-900/95 backdrop-blur-xl border border-white/15 shadow-2xl text-white text-xs rounded-xl px-2 py-1.5 hover:bg-white/10 focus:outline-none"
-                              >
-                                <option value="AM" className="bg-gray-900">AM</option>
-                                <option value="PM" className="bg-gray-900">PM</option>
-                              </select>
-                            </div>
-                            <button
-                              type="button"
-                              onClick={confirmTime}
-                              className="w-full mt-2.5 bg-gray-900/95 backdrop-blur-xl border border-white/15 shadow-2xl text-white rounded-xl hover:bg-white/10 py-1.5 text-[11px] font-bold uppercase tracking-wider transition"
-                            >
-                              Done
-                            </button>
-                          </div>
-                        </>
-                      )}
                     </div>
                     <button
                       type="button"
@@ -904,6 +857,52 @@ export default function App() {
                     >
                       <Plus className="w-3.5 h-3.5 text-zinc-200" />
                     </button>
+                    {showTimePicker && (
+                      <>
+                        <div
+                          className="fixed inset-0 z-[99]"
+                          onClick={() => setShowTimePicker(false)}
+                        />
+                        <div className="absolute w-full left-0 right-0 mt-2 z-[100] bg-gray-900/95 backdrop-blur-2xl border border-white/20 text-white shadow-2xl rounded-2xl p-3">
+                          <div className="flex items-center justify-center gap-1.5">
+                            <select
+                              value={pickerHour}
+                              onChange={(e) => setPickerHour(Number(e.target.value))}
+                              className="bg-gray-900/95 backdrop-blur-2xl border border-white/20 shadow-2xl text-white text-xs rounded-xl px-2 py-1.5 hover:bg-white/10 focus:outline-none"
+                            >
+                              {Array.from({ length: 12 }, (_, i) => i + 1).map((h) => (
+                                <option key={h} value={h} className="bg-gray-900">{String(h).padStart(2, '0')}</option>
+                              ))}
+                            </select>
+                            <span className="text-white text-xs">:</span>
+                            <select
+                              value={pickerMinute}
+                              onChange={(e) => setPickerMinute(Number(e.target.value))}
+                              className="bg-gray-900/95 backdrop-blur-2xl border border-white/20 shadow-2xl text-white text-xs rounded-xl px-2 py-1.5 hover:bg-white/10 focus:outline-none"
+                            >
+                              {[0, 15, 30, 45].map((mm) => (
+                                <option key={mm} value={mm} className="bg-gray-900">{String(mm).padStart(2, '0')}</option>
+                              ))}
+                            </select>
+                            <select
+                              value={pickerPeriod}
+                              onChange={(e) => setPickerPeriod(e.target.value as 'AM' | 'PM')}
+                              className="bg-gray-900/95 backdrop-blur-2xl border border-white/20 shadow-2xl text-white text-xs rounded-xl px-2 py-1.5 hover:bg-white/10 focus:outline-none"
+                            >
+                              <option value="AM" className="bg-gray-900">AM</option>
+                              <option value="PM" className="bg-gray-900">PM</option>
+                            </select>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={confirmTime}
+                            className="w-full mt-2.5 bg-gray-900/95 backdrop-blur-2xl border border-white/20 shadow-2xl text-white rounded-xl hover:bg-white/10 py-1.5 text-[11px] font-bold uppercase tracking-wider transition"
+                          >
+                            Done
+                          </button>
+                        </div>
+                      </>
+                    )}
                   </div>
                   {dayReminders.length > 0 ? (
                     <div className="space-y-1">
@@ -969,7 +968,12 @@ export default function App() {
           <div className="space-y-4 md:space-y-6 animate-fadeIn max-w-4xl mx-auto w-full pt-2 md:my-auto">
             <div className="flex justify-between items-center gap-3">
               <h2 className="text-base md:text-lg font-bold uppercase tracking-wider text-zinc-200">
-                {language === 'en' ? 'AI Prescription Analysis' : 'نسخہ (پرچی) کا تجزیہ'}
+                {language === 'en' ? (
+                  <span>
+                    <span className="bg-gradient-to-r from-blue-400 via-teal-300 to-emerald-400 bg-clip-text text-transparent font-extrabold">AI</span>{' '}
+                    MEDICINE SALT &amp; BOX SCANNER
+                  </span>
+                ) : 'نسخہ (پرچی) کا تجزیہ'}
               </h2>
               <button
                 onClick={() => setLanguage(language === 'en' ? 'ur' : 'en')}
@@ -1088,10 +1092,10 @@ export default function App() {
                     Select File
                   </button>
                 </div>
-                <div className="flex items-start gap-2.5 bg-white/[0.05] border border-white/15 rounded-2xl p-3.5 text-left max-w-md mx-auto">
-                  <Lightbulb className="w-4 h-4 text-white shrink-0 mt-0.5" />
-                  <p className="text-[11px] md:text-xs text-gray-200 leading-relaxed">
-                    <strong className="text-white">Tip:</strong> For best accuracy, upload a clear photo of the printed Medicine Box or Strip instead of handwritten prescriptions.
+                <div className="flex items-start gap-2.5 bg-blue-500/10 border border-blue-400/20 text-blue-200 rounded-xl p-4 text-left max-w-md mx-auto">
+                  <Lightbulb className="w-4 h-4 text-blue-300 shrink-0 mt-0.5" />
+                  <p className="text-[11px] md:text-xs text-blue-200 leading-relaxed">
+                    <strong className="text-blue-300">Tip:</strong> For best accuracy, upload a clear photo of the printed Medicine Box or Strip instead of handwritten prescriptions.
                   </p>
                 </div>
               </div>
@@ -1142,7 +1146,7 @@ export default function App() {
             <div className="space-y-3">
               <button
                 onClick={resetScan}
-                className="w-full py-3.5 md:py-4 bg-blue-900/30 hover:bg-blue-800/50 border border-blue-500/25 rounded-2xl text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-2 text-blue-100"
+                className="w-full py-3.5 md:py-4 bg-gradient-to-r from-blue-600/80 to-indigo-600/80 hover:from-blue-600 hover:to-indigo-600 text-white font-medium border border-white/15 shadow-lg transition-all rounded-2xl text-xs uppercase tracking-wider flex items-center justify-center gap-2"
               >
                 <RotateCcw className="w-4 h-4" />
                 {language === 'en' ? 'Capture New / Scan Another Medicine' : 'نیا اسکین کریں'}
