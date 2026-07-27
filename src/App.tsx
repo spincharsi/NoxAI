@@ -519,7 +519,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-[radial-gradient(circle_at_center,_#27272a_0%,_#09090b_65%,_#000000_100%)] text-white flex flex-col md:flex-row font-sans selection:bg-zinc-700 selection:text-white relative overflow-x-hidden">
+    <div className="min-h-screen md:h-screen bg-[radial-gradient(circle_at_center,_#27272a_0%,_#09090b_65%,_#000000_100%)] text-white flex flex-col md:flex-row font-sans selection:bg-zinc-700 selection:text-white relative overflow-x-hidden md:overflow-hidden">
 
       {/* DESKTOP SIDEBAR */}
       <aside className="hidden md:flex md:w-64 md:flex-col md:justify-between p-6 border-r border-white/10 bg-white/[0.03] backdrop-blur-3xl shrink-0">
@@ -598,7 +598,7 @@ export default function App() {
       </div>
 
       {/* MAIN CONTENT */}
-      <main className="min-h-screen w-full bg-[#1e2230] text-white overflow-y-auto pb-16">
+      <main className="flex-1 w-full px-4 sm:px-6 mx-auto flex flex-col overflow-y-auto pb-32 pt-3 md:pt-5">
         <input
           ref={fileInputRef}
           type="file"
@@ -609,26 +609,26 @@ export default function App() {
 
         {/* HOME TAB */}
         {activeTab === 'home' && (
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col gap-6 w-full">
+          <div className="gap-3 md:gap-5 animate-fadeIn flex flex-col">
 
             {/* Hero Section */}
             <button
               onClick={() => navigateTo('scan')}
               className="text-left w-full mb-2 cursor-pointer group"
             >
-              <div className="flex flex-col items-start gap-2 text-left w-full mb-3 lg:mb-6">
+              <div className="flex flex-col items-start gap-2 text-left w-full mb-2">
                 <p className="text-[10px] md:text-xs font-bold tracking-wider text-zinc-400 uppercase">
                   SMART MEDICINE SAVINGS ASSISTANT
                 </p>
                 <div className="flex items-end justify-between gap-4 w-full">
                   <h2 className="block md:hidden text-2xl font-bold text-white max-w-md leading-tight group-hover:text-blue-50 transition-colors">
-                    <span className="bg-gradient-to-r from-slate-100 via-slate-300 to-slate-500 bg-clip-text text-transparent font-black drop-shadow-[0_2px_10px_rgba(255,255,255,0.15)]">AI</span>-Powered<br />
+                    <span className="bg-gradient-to-r from-white via-slate-200 to-gray-400 bg-clip-text text-transparent font-black drop-shadow-[0_2px_10px_rgba(255,255,255,0.2)]">AI</span>-Powered<br />
                     Medicine Salt<br />
                     Comparison Assistant
                   </h2>
                   <h2 className="hidden md:flex md:flex-col md:gap-1.5 leading-tight group-hover:text-blue-50 transition-colors">
                     <span className="text-xl md:text-3xl font-bold text-zinc-200 tracking-tight">
-                      <span className="bg-gradient-to-r from-slate-100 via-slate-300 to-slate-500 bg-clip-text text-transparent font-black drop-shadow-[0_2px_10px_rgba(255,255,255,0.15)]">AI</span>-Powered Medicine
+                      <span className="bg-gradient-to-r from-white via-slate-200 to-gray-400 bg-clip-text text-transparent font-black drop-shadow-[0_2px_10px_rgba(255,255,255,0.2)]">AI</span>-Powered Medicine
                     </span>
                     <span className="text-2xl md:text-4xl font-bold text-white tracking-tight">
                       Salt Comparison Assistant
@@ -647,12 +647,12 @@ export default function App() {
             </button>
 
             {/* Top Row: 3 Main Cards with High Roundness */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start w-full">
+            <div className="w-full flex flex-col md:grid md:grid-cols-3 gap-4 md:gap-6 md:items-stretch">
 
               {/* Card 1: AI Scan Prescription (Mobile: 3rd | Desktop: 1st) */}
-              <div className="w-full h-auto md:h-full flex flex-col justify-between bg-[#181b25] border border-white/10 rounded-2xl p-5 lg:p-6 shadow-lg order-3 md:order-1 md:col-start-1 md:row-start-1">
+              <div className="w-full h-auto md:h-full flex flex-col justify-between bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-4 md:p-8 shadow-xl order-3 md:order-1 md:col-start-1 md:row-start-1">
                 <div className="flex flex-col flex-1">
-                  <div className="flex items-center justify-between mb-1.5 md:mb-4">
+                  <div className="flex items-center justify-between mb-2 md:mb-4">
                     <h2 className="text-xs font-bold tracking-wider text-white uppercase">
                       AI Scan Prescription
                     </h2>
@@ -661,11 +661,11 @@ export default function App() {
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-2 md:grid-cols-1 gap-2.5 md:gap-4 my-1.5 md:my-3 md:flex-1 relative">
+                  <div className="grid grid-cols-2 md:grid-cols-1 gap-3 md:gap-4 my-2 md:my-3 md:flex-1 relative">
                     <button
                       onClick={openCameraModal}
                       disabled={loading}
-                      className="flex flex-col items-center justify-center py-3.5 md:py-8 px-3 bg-zinc-800/60 hover:bg-zinc-800 border border-zinc-700/60 hover:border-white/30 rounded-2xl shadow-inner hover:shadow-[0_0_15px_rgba(255,255,255,0.08)] transition-all duration-300 group disabled:opacity-50 disabled:cursor-not-allowed md:flex-1 md:min-h-[120px]"
+                      className="flex flex-col items-center justify-center py-5 md:py-8 px-3 bg-zinc-800/60 hover:bg-zinc-800 border border-zinc-700/60 hover:border-white/30 rounded-2xl shadow-inner hover:shadow-[0_0_15px_rgba(255,255,255,0.08)] transition-all duration-300 group disabled:opacity-50 disabled:cursor-not-allowed md:flex-1 md:min-h-[120px]"
                     >
                       <Camera className="w-7 h-7 md:w-10 md:h-10 text-zinc-200 mb-1.5 md:mb-2 group-hover:scale-110 transition-transform" />
                       <span className="text-[10px] md:text-xs font-bold tracking-wider text-zinc-200 uppercase">
@@ -675,7 +675,7 @@ export default function App() {
                     <button
                       onClick={handleUploadClick}
                       disabled={loading}
-                      className="flex flex-col items-center justify-center py-3.5 md:py-8 px-3 bg-zinc-800/60 hover:bg-zinc-800 border border-zinc-700/60 hover:border-white/30 rounded-2xl shadow-inner hover:shadow-[0_0_15px_rgba(255,255,255,0.08)] transition-all duration-300 group disabled:opacity-50 disabled:cursor-not-allowed md:flex-1 md:min-h-[120px]"
+                      className="flex flex-col items-center justify-center py-5 md:py-8 px-3 bg-zinc-800/60 hover:bg-zinc-800 border border-zinc-700/60 hover:border-white/30 rounded-2xl shadow-inner hover:shadow-[0_0_15px_rgba(255,255,255,0.08)] transition-all duration-300 group disabled:opacity-50 disabled:cursor-not-allowed md:flex-1 md:min-h-[120px]"
                     >
                       <Upload className="w-7 h-7 md:w-10 md:h-10 text-zinc-200 mb-1.5 md:mb-2 group-hover:scale-110 transition-transform" />
                       <span className="text-[10px] md:text-xs font-bold tracking-wider text-zinc-200 uppercase">
@@ -692,7 +692,7 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="space-y-1.5 pt-2 md:pt-3 border-t border-white/20 mt-1.5 md:mt-3 md:space-y-2">
+                <div className="space-y-1.5 pt-2.5 border-t border-white/20 mt-2 md:mt-3 md:pt-3 md:space-y-2">
                   {featureBadges.map((f) => {
                     const Icon = f.icon;
                     return (
@@ -710,7 +710,7 @@ export default function App() {
               {/* Card 3: Smart Health Tips (Mobile: 2nd | Desktop: 3rd) */}
               <button
                 onClick={() => setActiveModal('tips')}
-                className="text-left w-full h-auto md:h-full flex flex-col justify-between bg-[#181b25] border border-white/10 rounded-2xl p-5 lg:p-6 shadow-lg cursor-pointer md:cursor-default hover:border-zinc-700 transition order-2 md:order-3 md:col-start-3 md:row-start-1"
+                className="text-left w-full h-auto md:h-full flex flex-col justify-between bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-4 md:p-8 shadow-xl cursor-pointer md:cursor-default hover:border-zinc-700 transition order-2 md:order-3 md:col-start-3 md:row-start-1"
               >
                 <div>
                   <div className="flex items-center justify-between">
@@ -738,10 +738,6 @@ export default function App() {
                       <p className="font-semibold text-zinc-200 text-[11px] mb-0.5">6. Doctor Consultation</p>
                       <p className="text-[10px] text-zinc-400 leading-normal">Always verify dosage changes with a healthcare professional.</p>
                     </div>
-                    <div className="hidden lg:block bg-white/5 border border-white/10 rounded-xl p-3.5 mb-2.5 transition-all hover:bg-white/[0.07]">
-                      <p className="font-semibold text-zinc-200 text-[11px] mb-0.5">7. Counterfeit Medication Check</p>
-                      <p className="text-[10px] text-zinc-400 leading-normal">Purchase medications exclusively from licensed pharmacies and verify holographic security stamps on packaging.</p>
-                    </div>
                   </div>
                 </div>
 
@@ -752,9 +748,9 @@ export default function App() {
               </button>
 
               {/* Card 2: Weekly Dosage Reminder (Mobile: 1st | Desktop: 2nd) */}
-              <div className="w-full h-auto md:h-full flex flex-col justify-between bg-[#181b25] border border-white/10 rounded-2xl p-5 lg:p-6 shadow-lg order-1 md:order-2 md:col-start-2 md:row-start-1 relative z-20">
+              <div className="w-full h-auto md:h-full flex flex-col justify-between bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-4 md:p-8 shadow-xl order-1 md:order-2 md:col-start-2 md:row-start-1 relative z-20">
                 <div>
-                  <div className="flex items-center justify-between mb-2 md:mb-4">
+                  <div className="flex items-center justify-between mb-3 md:mb-4">
                     <h2 className="text-xs font-semibold tracking-wider text-white uppercase">
                       Weekly Dosage Reminder
                     </h2>
@@ -769,14 +765,14 @@ export default function App() {
                   </div>
 
                   {/* MOBILE: compact 7-day pill strip */}
-                  <div className="grid md:hidden grid-cols-7 gap-1.5 my-1.5 text-center">
+                  <div className="grid md:hidden grid-cols-7 gap-1.5 my-2 text-center">
                     {weekSchedule.map((item, index) => {
                       const isSelected = selectedDay.short === currentMonthShort && selectedDay.date === item.date;
                       return (
                         <button
                           key={index}
                           onClick={() => setSelectedDay({ short: currentMonthShort, date: item.date })}
-                          className={`flex flex-col items-center justify-center py-2.5 rounded-full border transition-all cursor-pointer ${
+                          className={`flex flex-col items-center justify-center py-2.5 rounded-xl border transition-all cursor-pointer ${
                             isSelected
                               ? 'bg-zinc-100 text-zinc-950 border-white font-bold shadow-md scale-105'
                               : 'bg-white/5 hover:bg-white/10 border border-white/5 text-white font-medium hover:border-white/20'
@@ -848,7 +844,7 @@ export default function App() {
                 </div>
 
                 {/* PILL REMINDER & DOSAGE TRACKER */}
-                <div className="mt-2 md:mt-3 pt-2.5 md:pt-3 border-t border-white/20 space-y-1.5 md:space-y-2">
+                <div className="mt-3 pt-3 border-t border-white/20 space-y-2">
                   <p className="text-[10px] font-bold text-zinc-300 uppercase tracking-wider">Pill Reminder &amp; Dosage Tracker</p>
                   <div className="relative z-50 overflow-visible flex gap-1.5">
                     <input
@@ -882,21 +878,22 @@ export default function App() {
                           className="fixed inset-0 z-[99]"
                           onClick={() => setShowTimePicker(false)}
                         />
-                        <div className="w-full bg-[#181b25] border border-white/20 rounded-2xl p-4 mt-3 shadow-2xl flex flex-col gap-3 text-white z-50">
-                          <div className="grid grid-cols-3 gap-2 w-full">
+                        <div className="absolute top-full left-0 w-full mt-2 z-[9999] bg-[#181b25] backdrop-blur-2xl border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.95)] text-white rounded-2xl p-3">
+                          <div className="flex items-center justify-center gap-1.5">
                             <select
                               value={pickerHour}
                               onChange={(e) => setPickerHour(Number(e.target.value))}
-                              className="w-full bg-white/10 border border-white/15 rounded-xl p-2.5 text-center font-bold text-white outline-none"
+                              className="appearance-none bg-white/5 hover:bg-white/10 text-white border border-white/10 text-xs rounded-xl px-2 py-1.5 focus:outline-none focus:ring-0 text-center"
                             >
                               {Array.from({ length: 12 }, (_, i) => i + 1).map((h) => (
                                 <option key={h} value={h} className="bg-[#181b25]">{String(h).padStart(2, '0')}</option>
                               ))}
                             </select>
+                            <span className="text-white text-xs">:</span>
                             <select
                               value={pickerMinute}
                               onChange={(e) => setPickerMinute(Number(e.target.value))}
-                              className="w-full bg-white/10 border border-white/15 rounded-xl p-2.5 text-center font-bold text-white outline-none"
+                              className="appearance-none bg-white/5 hover:bg-white/10 text-white border border-white/10 text-xs rounded-xl px-2 py-1.5 focus:outline-none focus:ring-0 text-center"
                             >
                               {[0, 15, 30, 45].map((mm) => (
                                 <option key={mm} value={mm} className="bg-[#181b25]">{String(mm).padStart(2, '0')}</option>
@@ -905,7 +902,7 @@ export default function App() {
                             <select
                               value={pickerPeriod}
                               onChange={(e) => setPickerPeriod(e.target.value as 'AM' | 'PM')}
-                              className="w-full bg-white/10 border border-white/15 rounded-xl p-2.5 text-center font-bold text-white outline-none"
+                              className="appearance-none bg-white/5 hover:bg-white/10 text-white border border-white/10 text-xs rounded-xl px-2 py-1.5 focus:outline-none focus:ring-0 text-center"
                             >
                               <option value="AM" className="bg-[#181b25]">AM</option>
                               <option value="PM" className="bg-[#181b25]">PM</option>
@@ -914,9 +911,9 @@ export default function App() {
                           <button
                             type="button"
                             onClick={confirmTime}
-                            className="w-full bg-white/20 hover:bg-white/30 border border-white/20 rounded-xl py-2.5 font-bold text-center mt-1 transition-all text-white"
+                            className="w-full mt-2.5 bg-white/5 hover:bg-white/10 backdrop-blur-md text-white border border-white/15 rounded-xl py-1.5 text-[11px] font-bold uppercase tracking-wider transition"
                           >
-                            DONE
+                            Done
                           </button>
                         </div>
                       </>
@@ -953,9 +950,9 @@ export default function App() {
             </div>
 
             {/* Bottom Row: 3 Mini Cards (Desktop only) */}
-            <div className="hidden lg:grid lg:grid-cols-3 gap-6 w-full">
+            <div className="hidden md:grid md:grid-cols-3 gap-6 mt-1">
 
-              <div className="w-full flex items-center gap-4 bg-[#181b25] border border-white/10 rounded-2xl p-5 lg:p-6 shadow-lg">
+              <div className="w-full flex items-center gap-4 bg-zinc-900/90 border border-zinc-800 rounded-3xl p-5 shadow-lg">
                 <div className="p-3 bg-zinc-800 rounded-2xl border border-zinc-700/50 shrink-0">
                   <TrendingDown className="w-6 h-6 text-white" />
                 </div>
@@ -965,7 +962,7 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="w-full flex items-center gap-4 bg-[#181b25] border border-white/10 rounded-2xl p-5 lg:p-6 shadow-lg">
+              <div className="w-full flex items-center gap-4 bg-zinc-900/90 border border-zinc-800 rounded-3xl p-5 shadow-lg">
                 <div className="p-3 bg-zinc-800 rounded-2xl border border-zinc-700/50 shrink-0">
                   <Sparkles className="w-6 h-6 text-zinc-200" />
                 </div>
@@ -975,7 +972,7 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="w-full flex items-center gap-4 bg-[#181b25] border border-white/10 rounded-2xl p-5 lg:p-6 shadow-lg"><div className="p-3 bg-zinc-800 rounded-2xl border border-zinc-700/50"><Layers className="w-6 h-6 text-white" /></div><div><p className="text-[11px] font-bold tracking-wider text-zinc-400 uppercase">ACTIVE FORMULA</p><p className="text-base font-bold text-zinc-100">Live Matrix Active</p></div></div>
+              <div className="w-full flex items-center gap-4 bg-zinc-900/90 border border-zinc-800 rounded-3xl p-5 shadow-lg"><div className="p-3 bg-zinc-800 rounded-2xl border border-zinc-700/50"><Layers className="w-6 h-6 text-white" /></div><div><p className="text-[11px] font-bold tracking-wider text-zinc-400 uppercase">ACTIVE FORMULA</p><p className="text-base font-bold text-zinc-100">Live Matrix Active</p></div></div>
 
             </div>
           </div>
@@ -988,7 +985,7 @@ export default function App() {
               <h2 className="text-base md:text-lg font-bold uppercase tracking-wider text-zinc-200">
                 {language === 'en' ? (
                   <span>
-                    <span className="bg-gradient-to-r from-slate-100 via-slate-300 to-slate-500 bg-clip-text text-transparent font-black drop-shadow-[0_2px_10px_rgba(255,255,255,0.15)]">AI</span>{' '}
+                    <span className="bg-gradient-to-r from-white via-slate-200 to-gray-400 bg-clip-text text-transparent font-black drop-shadow-[0_2px_10px_rgba(255,255,255,0.2)]">AI</span>{' '}
                     MEDICINE SCANNER
                   </span>
                 ) : 'نسخہ (پرچی) کا تجزیہ'}
@@ -1032,34 +1029,37 @@ export default function App() {
                         <Pill className="w-5 h-5 text-white shrink-0" />
                         <div>
                           <h4 className="font-bold text-white text-base md:text-lg">{med.original}</h4>
-                          <span className="text-[10px] text-zinc-400 uppercase tracking-wider block">
-                            {med.formula} &middot; <span className="text-zinc-300">{med.origPrice}</span>
-                          </span>
+                          <span className="text-[10px] text-zinc-400 uppercase tracking-wider block">Prescribed Brand</span>
                         </div>
                       </div>
+                      <span className="text-xs text-zinc-400 line-through font-semibold shrink-0">{med.origPrice}</span>
                     </div>
 
-                    <div className="bg-white/5 border border-white/10 text-gray-200 rounded-xl p-3 space-y-0.5">
-                      <p className="text-[10px] text-zinc-400 uppercase font-bold tracking-wider flex items-center gap-1.5">
-                        <Zap className="w-3.5 h-3.5 text-white" />
-                        {language === 'en' ? 'What it is used for:' : 'دوائی کا مقصد (یہ کس لیے ہے):'}
-                      </p>
-                      <p className="text-xs md:text-sm text-gray-200 font-medium leading-relaxed">
-                        {(language === 'en' ? med.purposeEn : med.purposeUr) || (language === 'en' ? 'Use information not available for this medicine.' : 'اس دوائی کے لیے معلومات دستیاب نہیں۔')}
-                      </p>
-                    </div>
+                    {(language === 'en' ? med.purposeEn : med.purposeUr) && (
+                      <div className="bg-white/5 border border-white/10 rounded-xl p-3.5 space-y-0.5">
+                        <p className="text-[10px] text-zinc-400 uppercase font-bold tracking-wider flex items-center gap-1.5">
+                          <Zap className="w-3.5 h-3.5 text-white" />
+                          {language === 'en' ? 'What it is used for:' : 'دوائی کا مقصد (یہ کس لیے ہے):'}
+                        </p>
+                        <p className="text-xs md:text-sm text-zinc-200 font-medium leading-relaxed">
+                          {language === 'en' ? med.purposeEn : med.purposeUr}
+                        </p>
+                      </div>
+                    )}
 
-                    <div className="bg-white/5 border border-white/10 text-gray-200 rounded-xl p-3 space-y-0.5">
-                      <p className="text-[10px] text-zinc-400 uppercase font-bold tracking-wider flex items-center gap-1.5">
-                        <Clock className="w-3.5 h-3.5 text-white" />
-                        {language === 'en' ? 'Dosage & Instructions:' : 'خوراک کا طریقہ کار:'}
-                      </p>
-                      <p className="text-xs md:text-sm text-gray-200 font-medium leading-relaxed">
-                        {(language === 'en' ? med.dosageEn : med.dosageUr) || (language === 'en' ? 'Follow your doctor\'s prescription instructions.' : 'اپنے ڈاکٹر کے نسخے کی ہدایات پر عمل کریں۔')}
-                      </p>
-                    </div>
+                    {(language === 'en' ? med.dosageEn : med.dosageUr) && (
+                      <div className="bg-white/[0.03] border border-white/5 rounded-2xl p-2.5 space-y-0.5">
+                        <p className="text-[10px] text-zinc-400 uppercase font-bold tracking-wider flex items-center gap-1.5">
+                          <Clock className="w-3.5 h-3.5 text-white" />
+                          {language === 'en' ? 'Dosage & Instructions:' : 'خوراک کا طریقہ کار:'}
+                        </p>
+                        <p className="text-xs md:text-sm text-zinc-200 font-medium">
+                          {language === 'en' ? med.dosageEn : med.dosageUr}
+                        </p>
+                      </div>
+                    )}
 
-                    <div className="bg-blue-500/10 border border-blue-400/20 text-blue-100 rounded-xl p-3 flex justify-between items-center shadow-lg gap-3">
+                    <div className="bg-blue-500/10 border border-blue-400/20 text-blue-100 rounded-xl p-3.5 flex justify-between items-center shadow-lg gap-3">
                       <div className="space-y-0.5">
                         <p className="text-[10px] text-white font-bold uppercase tracking-wider">
                           {language === 'en' ? 'Cheaper Generic Salt Equivalent:' : 'سستا اور بااعتماد متبادل:'}

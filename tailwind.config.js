@@ -6,9 +6,6 @@ export default {
       borderRadius: {
         xs: '0.3125rem',
       },
-      spacing: {
-        '4.5': '1.125rem',
-      },
     },
   },
   plugins: [],
