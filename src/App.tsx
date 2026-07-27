@@ -387,11 +387,13 @@ export default function App() {
     month: 'long',
     year: 'numeric',
   });
-  const currentMonthShort = new Date().toLocaleDateString('en-US', { month: 'short' });
-  const currentMonthFull = new Date().toLocaleDateString('en-US', { month: 'long' });
-  const currentYear = new Date().getFullYear();
-  const daysInCurrentMonth = new Date(currentYear, new Date().getMonth() + 1, 0).getDate();
-  const nextMonthDate = new Date(currentYear, new Date().getMonth() + 1, 1);
+  const now = new Date();
+  const currentMonthShort = now.toLocaleDateString('en-US', { month: 'short' });
+  const currentMonthFull = now.toLocaleDateString('en-US', { month: 'long' });
+  const currentYear = now.getFullYear();
+  const currentMonthIndex = now.getMonth();
+  const daysInCurrentMonth = new Date(currentYear, currentMonthIndex + 1, 0).getDate();
+  const nextMonthDate = new Date(currentYear, currentMonthIndex + 1, 1);
   const nextMonthShort = nextMonthDate.toLocaleDateString('en-US', { month: 'short' });
   const nextMonthFull = nextMonthDate.toLocaleDateString('en-US', { month: 'long' });
   const nextMonthYear = nextMonthDate.getFullYear();
@@ -616,13 +618,13 @@ export default function App() {
                 </p>
                 <div className="flex items-end justify-between gap-4 w-full">
                   <h2 className="block md:hidden text-2xl font-bold text-white max-w-md leading-tight group-hover:text-blue-50 transition-colors">
-                    <span className="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 bg-clip-text text-transparent font-black">AI</span>-Powered<br />
+                    <span className="bg-gradient-to-r from-gray-100 via-slate-300 to-gray-400 bg-clip-text text-transparent font-black">AI</span>-Powered<br />
                     Medicine Salt<br />
                     Comparison Assistant
                   </h2>
                   <h2 className="hidden md:flex md:flex-col md:gap-1.5 leading-tight group-hover:text-blue-50 transition-colors">
                     <span className="text-xl md:text-3xl font-bold text-zinc-200 tracking-tight">
-                      <span className="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 bg-clip-text text-transparent font-black">AI</span>-Powered Medicine
+                      <span className="bg-gradient-to-r from-gray-100 via-slate-300 to-gray-400 bg-clip-text text-transparent font-black">AI</span>-Powered Medicine
                     </span>
                     <span className="text-2xl md:text-4xl font-bold text-white tracking-tight">
                       Salt Comparison Assistant
@@ -866,12 +868,12 @@ export default function App() {
                           className="fixed inset-0 z-[99]"
                           onClick={() => setShowTimePicker(false)}
                         />
-                        <div className="absolute top-full left-0 w-full mt-2 z-[9999] bg-gray-900/98 backdrop-blur-2xl border border-white/20 text-white shadow-2xl rounded-2xl p-3">
+                        <div className="absolute top-full left-0 w-full mt-2 z-[9999] bg-gray-950/95 backdrop-blur-2xl border border-white/20 shadow-[0_0_30px_rgba(0,0,0,0.8)] text-white rounded-2xl p-3">
                           <div className="flex items-center justify-center gap-1.5">
                             <select
                               value={pickerHour}
                               onChange={(e) => setPickerHour(Number(e.target.value))}
-                              className="bg-gray-900/98 backdrop-blur-2xl border border-white/20 shadow-2xl text-white text-xs rounded-xl px-2 py-1.5 hover:bg-white/10 focus:outline-none"
+                              className="bg-gray-950/95 backdrop-blur-2xl border border-white/20 shadow-[0_0_30px_rgba(0,0,0,0.8)] text-white text-xs rounded-xl px-2 py-1.5 hover:bg-white/10 focus:outline-none"
                             >
                               {Array.from({ length: 12 }, (_, i) => i + 1).map((h) => (
                                 <option key={h} value={h} className="bg-gray-900">{String(h).padStart(2, '0')}</option>
@@ -881,7 +883,7 @@ export default function App() {
                             <select
                               value={pickerMinute}
                               onChange={(e) => setPickerMinute(Number(e.target.value))}
-                              className="bg-gray-900/98 backdrop-blur-2xl border border-white/20 shadow-2xl text-white text-xs rounded-xl px-2 py-1.5 hover:bg-white/10 focus:outline-none"
+                              className="bg-gray-950/95 backdrop-blur-2xl border border-white/20 shadow-[0_0_30px_rgba(0,0,0,0.8)] text-white text-xs rounded-xl px-2 py-1.5 hover:bg-white/10 focus:outline-none"
                             >
                               {[0, 15, 30, 45].map((mm) => (
                                 <option key={mm} value={mm} className="bg-gray-900">{String(mm).padStart(2, '0')}</option>
@@ -890,7 +892,7 @@ export default function App() {
                             <select
                               value={pickerPeriod}
                               onChange={(e) => setPickerPeriod(e.target.value as 'AM' | 'PM')}
-                              className="bg-gray-900/98 backdrop-blur-2xl border border-white/20 shadow-2xl text-white text-xs rounded-xl px-2 py-1.5 hover:bg-white/10 focus:outline-none"
+                              className="bg-gray-950/95 backdrop-blur-2xl border border-white/20 shadow-[0_0_30px_rgba(0,0,0,0.8)] text-white text-xs rounded-xl px-2 py-1.5 hover:bg-white/10 focus:outline-none"
                             >
                               <option value="AM" className="bg-gray-900">AM</option>
                               <option value="PM" className="bg-gray-900">PM</option>
@@ -899,7 +901,7 @@ export default function App() {
                           <button
                             type="button"
                             onClick={confirmTime}
-                            className="w-full mt-2.5 bg-gray-900/98 backdrop-blur-2xl border border-white/20 shadow-2xl text-white rounded-xl hover:bg-white/10 py-1.5 text-[11px] font-bold uppercase tracking-wider transition"
+                            className="w-full mt-2.5 bg-gray-950/95 backdrop-blur-2xl border border-white/20 shadow-[0_0_30px_rgba(0,0,0,0.8)] text-white rounded-xl hover:bg-white/10 py-1.5 text-[11px] font-bold uppercase tracking-wider transition"
                           >
                             Done
                           </button>
@@ -973,7 +975,7 @@ export default function App() {
               <h2 className="text-base md:text-lg font-bold uppercase tracking-wider text-zinc-200">
                 {language === 'en' ? (
                   <span>
-                    <span className="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 bg-clip-text text-transparent font-black">AI</span>{' '}
+                    <span className="bg-gradient-to-r from-gray-100 via-slate-300 to-gray-400 bg-clip-text text-transparent font-black">AI</span>{' '}
                     MEDICINE SCANNER
                   </span>
                 ) : 'نسخہ (پرچی) کا تجزیہ'}
@@ -1024,7 +1026,7 @@ export default function App() {
                     </div>
 
                     {(language === 'en' ? med.purposeEn : med.purposeUr) && (
-                      <div className="bg-blue-500/10 border border-blue-400/20 text-blue-100 rounded-xl p-3.5 space-y-0.5">
+                      <div className="bg-white/5 border border-white/10 rounded-xl p-3.5 space-y-0.5">
                         <p className="text-[10px] text-zinc-400 uppercase font-bold tracking-wider flex items-center gap-1.5">
                           <Zap className="w-3.5 h-3.5 text-white" />
                           {language === 'en' ? 'What it is used for:' : 'دوائی کا مقصد (یہ کس لیے ہے):'}
@@ -1166,7 +1168,7 @@ export default function App() {
 
         {/* HISTORY TAB */}
         {activeTab === 'history' && (
-          <div className="space-y-3 md:space-y-4 animate-fadeIn max-w-4xl mx-auto w-full pt-2 md:my-auto">
+          <div className="space-y-3 md:space-y-4 animate-fadeIn max-w-4xl mx-auto w-full pt-2 lg:items-start lg:justify-start lg:mt-10">
             <h2 className="text-base md:text-lg font-bold uppercase tracking-wider text-zinc-200 mb-2">Scan History</h2>
             {history.length === 0 ? (
               <div className="bg-white/[0.05] backdrop-blur-2xl border border-white/10 rounded-[22px] p-6 text-center">
