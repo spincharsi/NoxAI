@@ -110,7 +110,7 @@ function buildWeekSchedule() {
 }
 
 const featureBadges = [
-  { icon: Zap, title: 'Active Salt', desc: 'Exact Formula' },
+  { icon: Zap, title: 'Active Salt Detection', desc: 'Exact Formula Match' },
   { icon: Layers, title: 'Cheaper Alternatives', desc: 'Lowest-priced local equivalents' },
   { icon: CheckCircle2, title: 'Instant Dosage Verification', desc: 'Verified safety limits & guidelines' },
 ];
@@ -699,11 +699,15 @@ export default function App() {
 
                   <div className="hidden md:block space-y-2.5 my-5 text-xs">
                     {tipsContent.slice(0, 5).map((tip) => (
-                      <div key={tip.id} className="bg-white/5 border border-white/10 rounded-lg p-3.5 mb-2.5 transition-all hover:bg-white/[0.07]">
+                      <div key={tip.id} className="bg-white/5 border border-white/10 rounded-xl p-3.5 mb-2.5 transition-all hover:bg-white/[0.07]">
                         <p className="font-semibold text-zinc-200 text-[11px] mb-0.5">{tip.id}. {tip.title}</p>
                         <p className="text-[10px] text-zinc-400 leading-normal">{tip.desc}</p>
                       </div>
                     ))}
+                    <div className="hidden lg:block bg-white/5 border border-white/10 rounded-xl p-3.5 mb-2.5 transition-all hover:bg-white/[0.07]">
+                      <p className="font-semibold text-zinc-200 text-[11px] mb-0.5">6. Doctor Consultation</p>
+                      <p className="text-[10px] text-zinc-400 leading-normal">Always verify dosage changes with a healthcare professional.</p>
+                    </div>
                   </div>
                 </div>
 
@@ -738,7 +742,7 @@ export default function App() {
                         <button
                           key={index}
                           onClick={() => setSelectedDay({ short: currentMonthShort, date: item.date })}
-                          className={`flex flex-col items-center justify-center py-2.5 rounded-md border transition-all cursor-pointer ${
+                          className={`flex flex-col items-center justify-center py-2.5 rounded-xl border transition-all cursor-pointer ${
                             isSelected
                               ? 'bg-zinc-100 text-zinc-950 border-white font-bold shadow-md scale-105'
                               : 'bg-white/5 hover:bg-white/10 border border-white/5 text-white font-medium hover:border-white/20'
@@ -765,7 +769,7 @@ export default function App() {
                             <button
                               key={`desk-cur-${day}`}
                               onClick={() => setSelectedDay({ short: currentMonthShort, date: day })}
-                              className={`py-1.5 rounded-md border transition-all cursor-pointer ${
+                              className={`py-1.5 rounded-xl border transition-all cursor-pointer ${
                                 isSelected
                                   ? 'bg-zinc-100 text-zinc-950 font-bold border-white shadow-md scale-110'
                                   : 'bg-white/5 hover:bg-white/10 border border-white/5 text-white font-medium hover:border-white/20'
@@ -788,7 +792,7 @@ export default function App() {
                             <button
                               key={`desk-nxt-${day}`}
                               onClick={() => setSelectedDay({ short: nextMonthShort, date: day })}
-                              className={`py-1.5 rounded-md border transition-all cursor-pointer ${
+                              className={`py-1.5 rounded-xl border transition-all cursor-pointer ${
                                 isSelected
                                   ? 'bg-zinc-100 text-zinc-950 font-bold border-white shadow-md scale-110'
                                   : 'bg-white/5 hover:bg-white/10 border border-white/5 text-white font-medium hover:border-white/20'
