@@ -118,7 +118,7 @@ export default function AuthModal({ onClose, onSuccess, initialMode = 'signin' }
   };
 
   const fieldClass =
-    'w-full bg-zinc-800/80 border rounded-xl pl-10 pr-4 py-3 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-emerald-400/60 focus:ring-1 focus:ring-emerald-400/40 transition';
+    'w-full bg-zinc-800/80 border rounded-xl pl-10 pr-4 py-3 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition';
   const errorFieldBorder = 'border-red-500/60';
   const okFieldBorder = 'border-white/15';
 
@@ -168,7 +168,7 @@ export default function AuthModal({ onClose, onSuccess, initialMode = 'signin' }
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="e.g. Ahmed Raza"
+                  placeholder="e.g. Abdul Ali"
                   autoFocus={mode === 'signup'}
                   className={`${fieldClass} ${errors.name ? errorFieldBorder : okFieldBorder}`}
                 />
@@ -251,7 +251,7 @@ export default function AuthModal({ onClose, onSuccess, initialMode = 'signin' }
             <button
               type="button"
               onClick={() => switchMode(mode === 'signin' ? 'signup' : 'signin')}
-              className="text-emerald-400 font-bold hover:underline underline-offset-2"
+              className="text-blue-400 font-bold hover:underline underline-offset-2"
             >
               {mode === 'signin' ? 'Sign up here' : 'Sign in here'}
             </button>

@@ -110,7 +110,7 @@ function buildWeekSchedule() {
 }
 
 const featureBadges = [
-  { icon: Zap, title: 'Active Salt Detection', desc: 'Instantly identifies exact chemical formula' },
+  { icon: Zap, title: 'Active Salt', desc: 'Exact Formula' },
   { icon: Layers, title: 'Cheaper Alternatives', desc: 'Lowest-priced local equivalents' },
   { icon: CheckCircle2, title: 'Instant Dosage Verification', desc: 'Verified safety limits & guidelines' },
 ];
@@ -410,7 +410,7 @@ export default function App() {
             <button
               type="button"
               onClick={() => openAuth('signup')}
-              className="text-white font-bold underline underline-offset-4 hover:text-emerald-400 transition md:text-sm"
+              className="text-white font-bold underline underline-offset-4 hover:text-blue-400 transition md:text-sm"
             >
               Register Now
             </button>
@@ -446,7 +446,7 @@ export default function App() {
           <div className="flex justify-between items-center border-b border-white/10 pb-4">
             <div className="flex items-center space-x-3">
               <div className="p-2 bg-white/10 rounded-xl border border-white/15">
-                <Shield className="w-5 h-5 text-emerald-400" />
+                <Shield className="w-5 h-5 text-blue-400" />
               </div>
               <h1 className="text-xl font-bold uppercase tracking-wider">NoxAI Privacy Policy</h1>
             </div>
@@ -590,12 +590,12 @@ export default function App() {
                   SMART MEDICINE SAVINGS ASSISTANT
                 </p>
                 <div className="flex items-end justify-between gap-4 w-full">
-                  <h2 className="block md:hidden text-2xl font-bold text-white max-w-md leading-tight group-hover:text-emerald-50 transition-colors">
+                  <h2 className="block md:hidden text-2xl font-bold text-white max-w-md leading-tight group-hover:text-blue-50 transition-colors">
                     AI-Powered<br />
                     Medicine Salt<br />
                     Comparison Assistant
                   </h2>
-                  <h2 className="hidden md:flex md:flex-col md:gap-1.5 leading-tight group-hover:text-emerald-50 transition-colors">
+                  <h2 className="hidden md:flex md:flex-col md:gap-1.5 leading-tight group-hover:text-blue-50 transition-colors">
                     <span className="text-xl md:text-3xl font-bold text-zinc-200 tracking-tight">
                       AI-Powered Medicine
                     </span>
@@ -603,13 +603,13 @@ export default function App() {
                       Salt Comparison Assistant
                     </span>
                   </h2>
-                  <ArrowDownRight className="w-6 h-6 text-white flex-shrink-0 mb-1 group-hover:text-emerald-400 group-hover:translate-y-1 transition-all" />
+                  <ArrowDownRight className="w-6 h-6 text-white flex-shrink-0 mb-1 group-hover:text-blue-400 group-hover:translate-y-1 transition-all" />
                 </div>
               </div>
               <div className="w-full h-0.5 bg-zinc-800 rounded-full my-2 overflow-hidden">
                 <div className="w-1/2 h-full bg-white rounded-full group-hover:w-3/4 transition-all duration-500"></div>
               </div>
-              <div className="flex items-center justify-between text-xs font-bold text-white tracking-wider uppercase pt-0.5 group-hover:text-emerald-100 transition-colors">
+              <div className="flex items-center justify-between text-xs font-bold text-white tracking-wider uppercase pt-0.5 group-hover:text-blue-100 transition-colors">
                 <span>VIEW MORE</span>
                 <ChevronRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />
               </div>
@@ -699,7 +699,7 @@ export default function App() {
 
                   <div className="hidden md:block space-y-2.5 my-5 text-xs">
                     {tipsContent.slice(0, 5).map((tip) => (
-                      <div key={tip.id} className="p-3 bg-zinc-800/40 rounded-2xl border border-zinc-800/80">
+                      <div key={tip.id} className="bg-white/5 border border-white/10 rounded-lg p-3.5 mb-2.5 transition-all hover:bg-white/[0.07]">
                         <p className="font-semibold text-zinc-200 text-[11px] mb-0.5">{tip.id}. {tip.title}</p>
                         <p className="text-[10px] text-zinc-400 leading-normal">{tip.desc}</p>
                       </div>
@@ -738,14 +738,14 @@ export default function App() {
                         <button
                           key={index}
                           onClick={() => setSelectedDay({ short: currentMonthShort, date: item.date })}
-                          className={`flex flex-col items-center justify-center py-2.5 rounded-full border transition-all cursor-pointer ${
+                          className={`flex flex-col items-center justify-center py-2.5 rounded-md border transition-all cursor-pointer ${
                             isSelected
                               ? 'bg-zinc-100 text-zinc-950 border-white font-bold shadow-md scale-105'
-                              : 'bg-zinc-800/50 text-zinc-400 border-zinc-800 hover:bg-zinc-800'
+                              : 'bg-white/5 hover:bg-white/10 border border-white/5 text-white font-medium hover:border-white/20'
                           }`}
                         >
-                          <span className={`text-[8px] uppercase tracking-wider ${isSelected ? 'text-zinc-600' : 'text-zinc-500'}`}>{item.day}</span>
-                          <span className={`text-[11px] font-semibold ${isSelected ? 'text-zinc-950' : 'text-zinc-200'}`}>{item.date}</span>
+                          <span className={`text-[8px] uppercase tracking-wider ${isSelected ? 'text-zinc-600' : 'text-zinc-400'}`}>{item.day}</span>
+                          <span className={`text-[11px] font-semibold ${isSelected ? 'text-zinc-950' : 'text-white'}`}>{item.date}</span>
                         </button>
                       );
                     })}
@@ -765,10 +765,10 @@ export default function App() {
                             <button
                               key={`desk-cur-${day}`}
                               onClick={() => setSelectedDay({ short: currentMonthShort, date: day })}
-                              className={`py-1.5 rounded-xl border transition-all cursor-pointer ${
+                              className={`py-1.5 rounded-md border transition-all cursor-pointer ${
                                 isSelected
                                   ? 'bg-zinc-100 text-zinc-950 font-bold border-white shadow-md scale-110'
-                                  : 'border-transparent hover:bg-zinc-800/60 text-zinc-300'
+                                  : 'bg-white/5 hover:bg-white/10 border border-white/5 text-white font-medium hover:border-white/20'
                               }`}
                             >
                               {day}
@@ -788,10 +788,10 @@ export default function App() {
                             <button
                               key={`desk-nxt-${day}`}
                               onClick={() => setSelectedDay({ short: nextMonthShort, date: day })}
-                              className={`py-1.5 rounded-xl border transition-all cursor-pointer ${
+                              className={`py-1.5 rounded-md border transition-all cursor-pointer ${
                                 isSelected
                                   ? 'bg-zinc-100 text-zinc-950 font-bold border-white shadow-md scale-110'
-                                  : 'border-transparent hover:bg-zinc-800/40 hover:text-zinc-400 text-zinc-500'
+                                  : 'bg-white/5 hover:bg-white/10 border border-white/5 text-white font-medium hover:border-white/20'
                               }`}
                             >
                               {day}
@@ -806,7 +806,7 @@ export default function App() {
                 {/* PILL REMINDER & DOSAGE TRACKER */}
                 <div className="mt-3 pt-3 border-t border-zinc-800/80 space-y-2">
                   <div className="flex items-center gap-1.5">
-                    <Pill className="w-3.5 h-3.5 text-emerald-400" />
+                    <Pill className="w-3.5 h-3.5 text-blue-400" />
                     <p className="text-[10px] font-bold text-zinc-300 uppercase tracking-wider">Pill Reminder &amp; Dosage Tracker</p>
                   </div>
                   <div className="flex gap-1.5">
@@ -856,7 +856,7 @@ export default function App() {
 
                 <div className="hidden md:flex pt-3 border-t border-zinc-800/80 items-center justify-between text-[11px] mt-3">
                   <span className="text-zinc-400">Selected: <strong className="text-zinc-200">{selectedDay.short} {selectedDay.date}, {currentYear}</strong></span>
-                  <span className="text-emerald-400 font-medium">{dayReminders.length} Reminder{dayReminders.length !== 1 ? 's' : ''}</span>
+                  <span className="text-blue-400 font-medium">{dayReminders.length} Reminder{dayReminders.length !== 1 ? 's' : ''}</span>
                 </div>
               </div>
 
@@ -902,7 +902,7 @@ export default function App() {
                 onClick={() => setLanguage(language === 'en' ? 'ur' : 'en')}
                 className="flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 px-3.5 py-1.5 rounded-full text-xs font-bold transition shadow-md shrink-0"
               >
-                <Globe className="w-4 h-4 text-emerald-400" />
+                <Globe className="w-4 h-4 text-blue-400" />
                 <span>{language === 'en' ? 'اردو میں دیکھیں' : 'Switch to English'}</span>
               </button>
             </div>
@@ -919,12 +919,12 @@ export default function App() {
                       <p className="text-[10px] text-zinc-400 uppercase font-semibold">
                         {language === 'en' ? 'Doctor Diagnosis / Disease' : 'پرچی کی تشخیص (بیماری)'}
                       </p>
-                      <h3 className="text-sm md:text-base font-bold text-emerald-400 mt-0.5">
+                      <h3 className="text-sm md:text-base font-bold text-blue-400 mt-0.5">
                         {language === 'en' ? currentScan.disease : (currentScan.diseaseUr ?? currentScan.disease)}
                       </h3>
                     </div>
                   </div>
-                  <span className="text-[10px] text-emerald-400 font-bold shrink-0">
+                  <span className="text-[10px] text-blue-400 font-bold shrink-0">
                     100% Salt Match
                   </span>
                 </div>
@@ -967,16 +967,16 @@ export default function App() {
                       </div>
                     )}
 
-                    <div className="bg-emerald-500/10 border border-emerald-500/20 p-2.5 rounded-2xl flex justify-between items-center shadow-lg gap-3">
+                    <div className="bg-blue-500/10 border border-blue-500/20 p-2.5 rounded-2xl flex justify-between items-center shadow-lg gap-3">
                       <div className="space-y-0.5">
-                        <p className="text-[10px] text-emerald-400 font-bold uppercase tracking-wider">
+                        <p className="text-[10px] text-blue-400 font-bold uppercase tracking-wider">
                           {language === 'en' ? 'Cheaper Generic Salt Equivalent:' : 'سستا اور بااعتماد متبادل:'}
                         </p>
                         <p className="font-extrabold text-white text-sm md:text-base">{med.alternative}</p>
                       </div>
                       <div className="text-right space-y-0.5 shrink-0">
-                        <p className="font-extrabold text-emerald-400 text-sm md:text-base">{med.altPrice}</p>
-                        <span className="text-[10px] text-emerald-400 font-bold block">
+                        <p className="font-extrabold text-blue-400 text-sm md:text-base">{med.altPrice}</p>
+                        <span className="text-[10px] text-blue-400 font-bold block">
                           {med.savings}
                         </span>
                       </div>
@@ -1028,7 +1028,7 @@ export default function App() {
               <div className="bg-white/[0.05] backdrop-blur-2xl border border-white/10 rounded-[22px] md:rounded-[24px] p-4 md:p-5 space-y-2 md:space-y-3">
                 <div className="flex items-center justify-between">
                   <h3 className="text-xs font-bold text-zinc-200 uppercase tracking-wider">Formula Accuracy Guide</h3>
-                  <ShieldCheck className="w-4 h-4 md:w-5 md:h-5 text-emerald-400" />
+                  <ShieldCheck className="w-4 h-4 md:w-5 md:h-5 text-blue-400" />
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="flex-1 bg-white/10 h-2 rounded-full overflow-hidden">
@@ -1142,9 +1142,9 @@ export default function App() {
 
               {isLoggedIn ? (
                 <div className="pt-2 space-y-3">
-                  <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-emerald-400 text-xs font-semibold space-y-0.5">
+                  <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-xl text-blue-400 text-xs font-semibold space-y-0.5">
                     <p>✓ You are signed in as {userName}</p>
-                    {userEmail && <p className="text-emerald-300/80 font-normal">{userEmail}</p>}
+                    {userEmail && <p className="text-blue-300/80 font-normal">{userEmail}</p>}
                   </div>
                   <button
                     onClick={handleLogout}
@@ -1219,7 +1219,7 @@ export default function App() {
             </button>
           </div>
 
-          <div className="flex-1 my-6 md:my-8 border-2 border-dashed border-emerald-400/50 rounded-[30px] md:rounded-[36px] relative flex items-center justify-center bg-zinc-900/40 overflow-hidden max-w-4xl mx-auto w-full">
+          <div className="flex-1 my-6 md:my-8 border-2 border-dashed border-blue-400/50 rounded-[30px] md:rounded-[36px] relative flex items-center justify-center bg-zinc-900/40 overflow-hidden max-w-4xl mx-auto w-full">
             <video ref={camera.videoRef} autoPlay playsInline muted className="absolute inset-0 w-full h-full object-cover" />
             {camera.ready && !camera.error && (
               <div className="absolute inset-6 border border-white/25 rounded-2xl pointer-events-none z-10" />
