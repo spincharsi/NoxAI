@@ -618,13 +618,13 @@ export default function App() {
                 </p>
                 <div className="flex items-end justify-between gap-4 w-full">
                   <h2 className="block md:hidden text-2xl font-bold text-white max-w-md leading-tight group-hover:text-blue-50 transition-colors">
-                    <span className="bg-gradient-to-r from-gray-100 via-slate-300 to-gray-400 bg-clip-text text-transparent font-black">AI</span>-Powered<br />
+                    <span className="bg-gradient-to-r from-white via-slate-200 to-gray-400 bg-clip-text text-transparent font-black drop-shadow-[0_2px_10px_rgba(255,255,255,0.2)]">AI</span>-Powered<br />
                     Medicine Salt<br />
                     Comparison Assistant
                   </h2>
                   <h2 className="hidden md:flex md:flex-col md:gap-1.5 leading-tight group-hover:text-blue-50 transition-colors">
                     <span className="text-xl md:text-3xl font-bold text-zinc-200 tracking-tight">
-                      <span className="bg-gradient-to-r from-gray-100 via-slate-300 to-gray-400 bg-clip-text text-transparent font-black">AI</span>-Powered Medicine
+                      <span className="bg-gradient-to-r from-white via-slate-200 to-gray-400 bg-clip-text text-transparent font-black drop-shadow-[0_2px_10px_rgba(255,255,255,0.2)]">AI</span>-Powered Medicine
                     </span>
                     <span className="text-2xl md:text-4xl font-bold text-white tracking-tight">
                       Salt Comparison Assistant
@@ -744,7 +744,7 @@ export default function App() {
               </button>
 
               {/* Card 2: Weekly Dosage Reminder (Mobile: 1st | Desktop: 2nd) */}
-              <div className="w-full h-auto md:h-full flex flex-col justify-between bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-4 md:p-8 shadow-xl order-1 md:order-2 md:col-start-2 md:row-start-1">
+              <div className="w-full h-auto md:h-full flex flex-col justify-between bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-4 md:p-8 shadow-xl order-1 md:order-2 md:col-start-2 md:row-start-1 relative z-20">
                 <div>
                   <div className="flex items-center justify-between mb-3 md:mb-4">
                     <h2 className="text-xs font-semibold tracking-wider text-white uppercase">
@@ -868,12 +868,12 @@ export default function App() {
                           className="fixed inset-0 z-[99]"
                           onClick={() => setShowTimePicker(false)}
                         />
-                        <div className="absolute top-full left-0 w-full mt-2 z-[9999] bg-gray-950/95 backdrop-blur-2xl border border-white/20 shadow-[0_0_30px_rgba(0,0,0,0.8)] text-white rounded-2xl p-3">
+                        <div className="absolute top-full left-0 w-full mt-2 z-[9999] bg-[#12141c] backdrop-blur-2xl border border-white/20 shadow-[0_10px_30px_rgba(0,0,0,0.9)] text-white rounded-2xl p-3">
                           <div className="flex items-center justify-center gap-1.5">
                             <select
                               value={pickerHour}
                               onChange={(e) => setPickerHour(Number(e.target.value))}
-                              className="bg-gray-950/95 backdrop-blur-2xl border border-white/20 shadow-[0_0_30px_rgba(0,0,0,0.8)] text-white text-xs rounded-xl px-2 py-1.5 hover:bg-white/10 focus:outline-none"
+                              className="bg-[#12141c] backdrop-blur-2xl border border-white/20 shadow-[0_10px_30px_rgba(0,0,0,0.9)] text-white text-xs rounded-xl px-2 py-1.5 hover:bg-white/10 focus:outline-none"
                             >
                               {Array.from({ length: 12 }, (_, i) => i + 1).map((h) => (
                                 <option key={h} value={h} className="bg-gray-900">{String(h).padStart(2, '0')}</option>
@@ -883,7 +883,7 @@ export default function App() {
                             <select
                               value={pickerMinute}
                               onChange={(e) => setPickerMinute(Number(e.target.value))}
-                              className="bg-gray-950/95 backdrop-blur-2xl border border-white/20 shadow-[0_0_30px_rgba(0,0,0,0.8)] text-white text-xs rounded-xl px-2 py-1.5 hover:bg-white/10 focus:outline-none"
+                              className="bg-[#12141c] backdrop-blur-2xl border border-white/20 shadow-[0_10px_30px_rgba(0,0,0,0.9)] text-white text-xs rounded-xl px-2 py-1.5 hover:bg-white/10 focus:outline-none"
                             >
                               {[0, 15, 30, 45].map((mm) => (
                                 <option key={mm} value={mm} className="bg-gray-900">{String(mm).padStart(2, '0')}</option>
@@ -892,7 +892,7 @@ export default function App() {
                             <select
                               value={pickerPeriod}
                               onChange={(e) => setPickerPeriod(e.target.value as 'AM' | 'PM')}
-                              className="bg-gray-950/95 backdrop-blur-2xl border border-white/20 shadow-[0_0_30px_rgba(0,0,0,0.8)] text-white text-xs rounded-xl px-2 py-1.5 hover:bg-white/10 focus:outline-none"
+                              className="bg-[#12141c] backdrop-blur-2xl border border-white/20 shadow-[0_10px_30px_rgba(0,0,0,0.9)] text-white text-xs rounded-xl px-2 py-1.5 hover:bg-white/10 focus:outline-none"
                             >
                               <option value="AM" className="bg-gray-900">AM</option>
                               <option value="PM" className="bg-gray-900">PM</option>
@@ -901,7 +901,7 @@ export default function App() {
                           <button
                             type="button"
                             onClick={confirmTime}
-                            className="w-full mt-2.5 bg-gray-950/95 backdrop-blur-2xl border border-white/20 shadow-[0_0_30px_rgba(0,0,0,0.8)] text-white rounded-xl hover:bg-white/10 py-1.5 text-[11px] font-bold uppercase tracking-wider transition"
+                            className="w-full mt-2.5 bg-[#12141c] backdrop-blur-2xl border border-white/20 shadow-[0_10px_30px_rgba(0,0,0,0.9)] text-white rounded-xl hover:bg-white/10 py-1.5 text-[11px] font-bold uppercase tracking-wider transition"
                           >
                             Done
                           </button>
@@ -975,7 +975,7 @@ export default function App() {
               <h2 className="text-base md:text-lg font-bold uppercase tracking-wider text-zinc-200">
                 {language === 'en' ? (
                   <span>
-                    <span className="bg-gradient-to-r from-gray-100 via-slate-300 to-gray-400 bg-clip-text text-transparent font-black">AI</span>{' '}
+                    <span className="bg-gradient-to-r from-white via-slate-200 to-gray-400 bg-clip-text text-transparent font-black drop-shadow-[0_2px_10px_rgba(255,255,255,0.2)]">AI</span>{' '}
                     MEDICINE SCANNER
                   </span>
                 ) : 'نسخہ (پرچی) کا تجزیہ'}
