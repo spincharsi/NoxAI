@@ -50,6 +50,7 @@ async function compressImage(file: File): Promise<File> {
     return await imageCompression(file, {
       maxSizeMB: 0.2,
       maxWidthOrHeight: 1024,
+      initialQuality: 0.8,
       useWebWorker: true,
     });
   } catch {

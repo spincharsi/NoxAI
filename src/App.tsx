@@ -159,6 +159,7 @@ export default function App() {
     return { short: months[today.getMonth()], date: today.getDate() };
   });
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const scanningRef = useRef(false);
 
   const camera = useCamera();
 
@@ -264,6 +265,8 @@ export default function App() {
   }, [showCameraModal]);
 
   const runScan = async (file: File | null, source: 'upload' | 'camera') => {
+    if (scanningRef.current) return;
+    scanningRef.current = true;
     setLoading(true);
     setCurrentScan(null);
     setScanError(null);
@@ -279,6 +282,7 @@ export default function App() {
       navigateTo('scan');
     } finally {
       setLoading(false);
+      scanningRef.current = false;
     }
   };
 
