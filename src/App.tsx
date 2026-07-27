@@ -661,7 +661,7 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="space-y-1.5 pt-2.5 border-t border-zinc-800/80 mt-2 md:mt-3 md:pt-3 md:space-y-2">
+                <div className="space-y-1.5 pt-2.5 border-t border-white/20 mt-2 md:mt-3 md:pt-3 md:space-y-2">
                   {featureBadges.map((f) => {
                     const Icon = f.icon;
                     return (
@@ -711,7 +711,7 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="hidden md:flex pt-3 border-t border-zinc-800/80 items-center justify-between text-[11px] text-zinc-400 mt-3">
+                <div className="hidden md:flex pt-3 border-t border-white/20 items-center justify-between text-[11px] text-zinc-400 mt-3">
                   <span>Storage &amp; dosage guidelines</span>
                   <ShieldCheck className="w-4 h-4 text-white hidden md:block" />
                 </div>
@@ -722,7 +722,7 @@ export default function App() {
                 <div>
                   <div className="flex items-center justify-between mb-3 md:mb-4">
                     <h2 className="text-xs font-semibold tracking-wider text-white uppercase">
-                      Weekly Schedule
+                      Weekly Dosage Reminder
                     </h2>
                     <button
                       onClick={() => setActiveModal('calendar')}
@@ -782,7 +782,7 @@ export default function App() {
                       </div>
                     </div>
 
-                    <div className="pt-3 border-t border-zinc-800/60">
+                    <div className="pt-3 border-t border-white/20">
                       <p className="text-[10px] font-bold text-zinc-400 tracking-wider uppercase mb-1.5">{nextMonthShort} {nextMonthYear}</p>
                       <div className="grid grid-cols-7 gap-1 text-center font-medium text-zinc-500">
                         {[...Array(daysInNextMonth)].map((_, i) => {
@@ -808,11 +808,8 @@ export default function App() {
                 </div>
 
                 {/* PILL REMINDER & DOSAGE TRACKER */}
-                <div className="mt-3 pt-3 border-t border-zinc-800/80 space-y-2">
-                  <div className="flex items-center gap-1.5">
-                    <Pill className="w-3.5 h-3.5 text-blue-400" />
-                    <p className="text-[10px] font-bold text-zinc-300 uppercase tracking-wider">Pill Reminder &amp; Dosage Tracker</p>
-                  </div>
+                <div className="mt-3 pt-3 border-t border-white/20 space-y-2">
+                  <p className="text-[10px] font-bold text-zinc-300 uppercase tracking-wider">Pill Reminder &amp; Dosage Tracker</p>
                   <div className="flex gap-1.5">
                     <input
                       type="text"
@@ -858,7 +855,7 @@ export default function App() {
                   )}
                 </div>
 
-                <div className="hidden md:flex pt-3 border-t border-zinc-800/80 items-center justify-between text-[11px] mt-3">
+                <div className="hidden md:flex pt-3 border-t border-white/20 items-center justify-between text-[11px] mt-3">
                   <span className="text-zinc-400">Selected: <strong className="text-zinc-200">{selectedDay.short} {selectedDay.date}, {currentYear}</strong></span>
                   <span className="text-blue-400 font-medium">{dayReminders.length} Reminder{dayReminders.length !== 1 ? 's' : ''}</span>
                 </div>
@@ -906,7 +903,7 @@ export default function App() {
                 onClick={() => setLanguage(language === 'en' ? 'ur' : 'en')}
                 className="flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 px-3.5 py-1.5 rounded-full text-xs font-bold transition shadow-md shrink-0"
               >
-                <Globe className="w-4 h-4 text-blue-400" />
+                <Globe className="w-4 h-4 text-white" />
                 <span>{language === 'en' ? 'اردو میں دیکھیں' : 'Switch to English'}</span>
               </button>
             </div>
@@ -1032,7 +1029,7 @@ export default function App() {
               <div className="bg-white/[0.05] backdrop-blur-2xl border border-white/10 rounded-[22px] md:rounded-[24px] p-4 md:p-5 space-y-2 md:space-y-3">
                 <div className="flex items-center justify-between">
                   <h3 className="text-xs font-bold text-zinc-200 uppercase tracking-wider">Formula Accuracy Guide</h3>
-                  <ShieldCheck className="w-4 h-4 md:w-5 md:h-5 text-blue-400" />
+                  <ShieldCheck className="w-4 h-4 md:w-5 md:h-5 text-white" />
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="flex-1 bg-white/10 h-2 rounded-full overflow-hidden">

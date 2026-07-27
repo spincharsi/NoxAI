@@ -118,7 +118,7 @@ export default function AuthModal({ onClose, onSuccess, initialMode = 'signin' }
   };
 
   const fieldClass =
-    'w-full bg-zinc-800/80 border rounded-xl pl-10 pr-4 py-3 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition';
+    'w-full bg-zinc-800/80 border rounded-xl pl-10 pr-4 py-3 text-sm text-white placeholder-zinc-500 focus:border-white/30 focus:ring-0 focus:outline-none transition';
   const errorFieldBorder = 'border-red-500/60';
   const okFieldBorder = 'border-white/15';
 
@@ -251,7 +251,7 @@ export default function AuthModal({ onClose, onSuccess, initialMode = 'signin' }
             <button
               type="button"
               onClick={() => switchMode(mode === 'signin' ? 'signup' : 'signin')}
-              className="text-blue-400 font-bold hover:underline underline-offset-2"
+              className="text-white font-medium hover:underline underline-offset-2"
             >
               {mode === 'signin' ? 'Sign up here' : 'Sign in here'}
             </button>
