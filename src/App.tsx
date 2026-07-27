@@ -598,7 +598,7 @@ export default function App() {
       </div>
 
       {/* MAIN CONTENT */}
-      <main className="flex-1 w-full px-4 sm:px-6 mx-auto flex flex-col overflow-y-auto pb-32 pt-3 md:pt-5">
+      <main className="flex-1 w-full max-w-7xl mx-auto px-4 lg:px-8 flex flex-col overflow-y-auto pb-32 pt-3 md:pt-5">
         <input
           ref={fileInputRef}
           type="file"
@@ -647,7 +647,7 @@ export default function App() {
             </button>
 
             {/* Top Row: 3 Main Cards with High Roundness */}
-            <div className="w-full flex flex-col md:grid md:grid-cols-3 gap-4 lg:gap-6 space-y-3 mb-3 lg:space-y-6 lg:mb-6 md:space-y-0 md:items-stretch">
+            <div className="flex flex-col gap-4 w-full my-2 lg:grid lg:grid-cols-3 lg:gap-6 lg:my-6 lg:items-start">
 
               {/* Card 1: AI Scan Prescription (Mobile: 3rd | Desktop: 1st) */}
               <div className="w-full h-auto md:h-full flex flex-col justify-between bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-4 lg:p-6 shadow-xl order-3 md:order-1 md:col-start-1 md:row-start-1">
@@ -953,7 +953,7 @@ export default function App() {
             </div>
 
             {/* Bottom Row: 3 Mini Cards (Desktop only) */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 items-stretch mt-4">
+            <div className="hidden lg:grid lg:grid-cols-3 gap-6 mt-6 w-full">
 
               <div className="w-full flex items-center gap-4 bg-zinc-900/90 border border-zinc-800 rounded-3xl p-5 shadow-lg">
                 <div className="p-3 bg-zinc-800 rounded-2xl border border-zinc-700/50 shrink-0">
