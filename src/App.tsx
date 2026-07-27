@@ -398,6 +398,10 @@ export default function App() {
   const nextMonthFull = nextMonthDate.toLocaleDateString('en-US', { month: 'long' });
   const nextMonthYear = nextMonthDate.getFullYear();
   const daysInNextMonth = new Date(nextMonthYear, nextMonthDate.getMonth() + 1, 0).getDate();
+  const currentMonthStartDay = new Date(currentYear, currentMonthIndex, 1).getDay();
+  const currentMonthOffset = currentMonthStartDay === 0 ? 6 : currentMonthStartDay - 1;
+  const nextMonthStartDay = new Date(nextMonthYear, nextMonthDate.getMonth(), 1).getDay();
+  const nextMonthOffset = nextMonthStartDay === 0 ? 6 : nextMonthStartDay - 1;
 
   const closeModal = () => setActiveModal('none');
 
@@ -788,6 +792,9 @@ export default function App() {
                         <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
                       </div>
                       <div className="grid grid-cols-7 gap-1 text-center font-medium text-zinc-300">
+                        {[...Array(currentMonthOffset)].map((_, i) => (
+                          <div key={`pad-cur-${i}`} className="py-1.5"></div>
+                        ))}
                         {[...Array(daysInCurrentMonth)].map((_, i) => {
                           const day = i + 1;
                           const isSelected = selectedDay.short === currentMonthShort && selectedDay.date === day;
@@ -811,6 +818,9 @@ export default function App() {
                     <div className="pt-3 border-t border-white/20">
                       <p className="text-[10px] font-bold text-zinc-400 tracking-wider uppercase mb-1.5">{nextMonthShort} {nextMonthYear}</p>
                       <div className="grid grid-cols-7 gap-1 text-center font-medium text-zinc-500">
+                        {[...Array(nextMonthOffset)].map((_, i) => (
+                          <div key={`pad-nxt-${i}`} className="py-1.5"></div>
+                        ))}
                         {[...Array(daysInNextMonth)].map((_, i) => {
                           const day = i + 1;
                           const isSelected = selectedDay.short === nextMonthShort && selectedDay.date === day;
