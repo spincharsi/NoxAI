@@ -30,6 +30,7 @@ import {
   FileText,
   Clock,
   Mail,
+  RotateCcw,
 } from 'lucide-react';
 import NorixAIHeader from './components/NorixAIHeader';
 import AuthModal from './components/AuthModal';
@@ -279,6 +280,12 @@ export default function App() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const resetScan = () => {
+    setCurrentScan(null);
+    setScanError(null);
+    if (fileInputRef.current) fileInputRef.current.value = '';
   };
 
   const handleUploadClick = () => {
@@ -882,6 +889,14 @@ export default function App() {
                     </div>
                   </div>
                 ))}
+
+                <button
+                  onClick={resetScan}
+                  className="w-full py-3.5 md:py-4 bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-500 hover:to-teal-400 border border-blue-400/30 rounded-2xl text-xs font-bold uppercase tracking-wider transition shadow-lg shadow-blue-500/20 flex items-center justify-center gap-2"
+                >
+                  <RotateCcw className="w-4 h-4" />
+                  {language === 'en' ? 'Scan Another / Capture New' : 'نیا نسخہ اسکین کریں'}
+                </button>
               </div>
             ) : loading ? (
               <div className="bg-white/[0.05] backdrop-blur-2xl border border-white/10 rounded-[26px] p-8 text-center space-y-4">
@@ -894,6 +909,10 @@ export default function App() {
                 <p className="text-sm md:text-base text-red-300 font-semibold">Scan could not be completed</p>
                 <p className="text-xs text-red-200/80 break-words">{scanError}</p>
                 <div className="flex justify-center gap-3 pt-1">
+                  <button onClick={resetScan} className="px-5 py-2.5 md:px-6 md:py-3 bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-500 hover:to-teal-400 border border-blue-400/30 rounded-xl md:rounded-2xl text-xs font-bold uppercase tracking-wider transition shadow-lg shadow-blue-500/20 flex items-center gap-2">
+                    <RotateCcw className="w-4 h-4" />
+                    {language === 'en' ? 'Capture New' : 'نیا اسکین'}
+                  </button>
                   <button onClick={openCameraModal} className="px-5 py-2.5 bg-zinc-800 hover:bg-zinc-700 border border-white/15 rounded-xl text-xs font-bold uppercase tracking-wider transition">
                     Retry Camera
                   </button>
@@ -913,6 +932,12 @@ export default function App() {
                   <button onClick={handleUploadClick} className="px-5 py-2.5 md:px-6 md:py-3 bg-white/10 hover:bg-white/20 border border-white/15 rounded-xl md:rounded-2xl text-xs font-bold uppercase tracking-wider transition">
                     Select File
                   </button>
+                </div>
+                <div className="flex items-start gap-2.5 bg-blue-500/10 border border-blue-500/20 rounded-2xl p-3.5 text-left max-w-md mx-auto">
+                  <Lightbulb className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
+                  <p className="text-[11px] md:text-xs text-blue-100/90 leading-relaxed">
+                    <strong className="text-blue-300">Tip:</strong> For best accuracy, upload a clear photo of the printed Medicine Box or Strip instead of handwritten prescriptions.
+                  </p>
                 </div>
               </div>
             )}

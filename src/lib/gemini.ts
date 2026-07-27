@@ -124,7 +124,7 @@ export async function scanPrescription(
   let text = '';
   try {
     const response = await ai.models.generateContent({
-      model: 'gemini-flash-latest',
+      model: 'gemini-1.5-flash',
       contents: [
         { text: GEMINI_PROMPT },
         { inlineData: { mimeType, data: base64 } },
@@ -137,8 +137,15 @@ export async function scanPrescription(
     });
     text = response.text ?? '';
   } catch (err) {
-    const msg = err instanceof Error ? err.message : 'Gemini request failed';
-    throw new Error(`AI scan failed: ${msg}`);
+    const msg = err instanceof Error ? err.message : String(err);
+    const isRateLimit = /429|RESOURCE_EXHAUSTED|quota|rate.?limit/i.test(msg);
+    if (isRateLimit) {
+      throw new Error(
+        'AI system is busy. Please wait 10-15 seconds and click Retry.\n' +
+          'اے آئی سسٹم مصروف ہے۔ براہ کرم ۱۰-۱۵ سیکنڈ انتظار کریں اور دوبارہ کوشش کریں۔'
+      );
+    }
+    throw new Error('AI scan failed. Please try again with a clearer image.');
   }
 
   try {
