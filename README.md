@@ -2,6 +2,14 @@
 
 A mobile-first, deep-blue dark-mode web app that scans prescriptions with Google Gemini Vision and compares branded medicines against low-cost generic alternatives available in Pakistan — showing exact prices and percentage savings.
 
+## Live Demo & App Screenshots
+
+**Live App URL:** [https://nox-ai-mu.vercel.app](https://nox-ai-mu.vercel.app)
+
+| Scan Interface | AI Analysis Result | Savings Dashboard |
+| :---: | :---: | :---: |
+| ![Scan](./screenshots/scan.png) | ![Result](./screenshots/result.png) | ![Analytics](./screenshots/analytics.png) |
+
 ## What It Does
 
 1. **Scan a prescription** — upload a photo or PDF via the central dropzone.
