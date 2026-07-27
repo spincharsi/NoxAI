@@ -519,7 +519,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen md:h-screen bg-[radial-gradient(circle_at_center,_#27272a_0%,_#09090b_65%,_#000000_100%)] text-white flex flex-col md:flex-row font-sans selection:bg-zinc-700 selection:text-white relative overflow-x-hidden md:overflow-hidden">
+    <div className="min-h-screen bg-[radial-gradient(circle_at_center,_#27272a_0%,_#09090b_65%,_#000000_100%)] text-white flex flex-col md:flex-row font-sans selection:bg-zinc-700 selection:text-white relative overflow-x-hidden">
 
       {/* DESKTOP SIDEBAR */}
       <aside className="hidden md:flex md:w-64 md:flex-col md:justify-between p-6 border-r border-white/10 bg-white/[0.03] backdrop-blur-3xl shrink-0">
@@ -598,7 +598,7 @@ export default function App() {
       </div>
 
       {/* MAIN CONTENT */}
-      <main className="w-full max-w-[1600px] mx-auto px-4 lg:px-6 py-4 flex flex-col gap-4">
+      <main className="w-full min-h-screen flex flex-col justify-start pb-24 lg:pb-12 overflow-y-auto">
         <input
           ref={fileInputRef}
           type="file"
@@ -882,12 +882,12 @@ export default function App() {
                           className="fixed inset-0 z-[99]"
                           onClick={() => setShowTimePicker(false)}
                         />
-                        <div style={{ backgroundColor: '#181b25', width: '100%', borderRadius: '1rem', border: '1px solid rgba(255, 255, 255, 0.15)' }} className="p-4 text-white shadow-2xl z-[9999] mt-2 flex flex-col gap-3">
+                        <div style={{ backgroundColor: '#181b25', borderRadius: '1rem', border: '1px solid rgba(255, 255, 255, 0.2)' }} className="w-full p-4 mt-3 shadow-2xl flex flex-col gap-3 text-white z-[9999]">
                           <div className="grid grid-cols-3 gap-2 w-full">
                             <select
                               value={pickerHour}
                               onChange={(e) => setPickerHour(Number(e.target.value))}
-                              className="bg-white/10 hover:bg-white/15 border border-white/20 text-white font-bold rounded-xl p-2.5 text-center focus:outline-none focus:ring-2 focus:ring-white/30 cursor-pointer w-full"
+                              className="w-full bg-white/10 border border-white/20 rounded-xl p-2.5 text-center font-bold text-white outline-none"
                             >
                               {Array.from({ length: 12 }, (_, i) => i + 1).map((h) => (
                                 <option key={h} value={h} className="bg-[#181b25]">{String(h).padStart(2, '0')}</option>
@@ -896,7 +896,7 @@ export default function App() {
                             <select
                               value={pickerMinute}
                               onChange={(e) => setPickerMinute(Number(e.target.value))}
-                              className="bg-white/10 hover:bg-white/15 border border-white/20 text-white font-bold rounded-xl p-2.5 text-center focus:outline-none focus:ring-2 focus:ring-white/30 cursor-pointer w-full"
+                              className="w-full bg-white/10 border border-white/20 rounded-xl p-2.5 text-center font-bold text-white outline-none"
                             >
                               {[0, 15, 30, 45].map((mm) => (
                                 <option key={mm} value={mm} className="bg-[#181b25]">{String(mm).padStart(2, '0')}</option>
@@ -905,7 +905,7 @@ export default function App() {
                             <select
                               value={pickerPeriod}
                               onChange={(e) => setPickerPeriod(e.target.value as 'AM' | 'PM')}
-                              className="bg-white/10 hover:bg-white/15 border border-white/20 text-white font-bold rounded-xl p-2.5 text-center focus:outline-none focus:ring-2 focus:ring-white/30 cursor-pointer w-full"
+                              className="w-full bg-white/10 border border-white/20 rounded-xl p-2.5 text-center font-bold text-white outline-none"
                             >
                               <option value="AM" className="bg-[#181b25]">AM</option>
                               <option value="PM" className="bg-[#181b25]">PM</option>
@@ -914,7 +914,7 @@ export default function App() {
                           <button
                             type="button"
                             onClick={confirmTime}
-                            className="w-full bg-white/15 hover:bg-white/25 border border-white/20 text-white font-extrabold rounded-xl py-2.5 transition-all text-center tracking-wider shadow-lg mt-1"
+                            className="w-full bg-white/20 hover:bg-white/30 border border-white/20 rounded-xl py-2.5 font-extrabold text-center tracking-wider mt-1 transition-all"
                           >
                             DONE
                           </button>
