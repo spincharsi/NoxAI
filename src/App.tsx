@@ -178,6 +178,10 @@ export default function App() {
   });
   const [newReminderName, setNewReminderName] = useState('');
   const [newReminderTime, setNewReminderTime] = useState('');
+  const [showTimePicker, setShowTimePicker] = useState(false);
+  const [pickerHour, setPickerHour] = useState(8);
+  const [pickerMinute, setPickerMinute] = useState(0);
+  const [pickerPeriod, setPickerPeriod] = useState<'AM' | 'PM'>('AM');
   const fileInputRef = useRef<HTMLInputElement>(null);
   const scanningRef = useRef(false);
 
@@ -323,6 +327,24 @@ export default function App() {
     setReminders((prev) => [...prev, { id: `${Date.now()}`, medicineName: name, time: newReminderTime, dayKey: key }]);
     setNewReminderName('');
     setNewReminderTime('');
+    setShowTimePicker(false);
+  };
+
+  const openTimePicker = () => {
+    const m = newReminderTime.match(/(\d{2}):(\d{2})\s*(AM|PM)/i);
+    if (m) {
+      setPickerHour(Number(m[1]));
+      setPickerMinute(Number(m[2]));
+      setPickerPeriod(m[3].toUpperCase() as 'AM' | 'PM');
+    }
+    setShowTimePicker(true);
+  };
+
+  const confirmTime = () => {
+    const hh = String(pickerHour).padStart(2, '0');
+    const mm = String(pickerMinute).padStart(2, '0');
+    setNewReminderTime(`${hh}:${mm} ${pickerPeriod}`);
+    setShowTimePicker(false);
   };
 
   const removeReminder = (id: string) => {
@@ -816,18 +838,62 @@ export default function App() {
                       value={newReminderName}
                       onChange={(e) => setNewReminderName(e.target.value)}
                       placeholder="Medicine name"
-                      className="flex-1 min-w-0 bg-zinc-800/60 border border-zinc-700/60 rounded-lg px-2.5 py-1.5 text-[11px] text-white placeholder-zinc-500 focus:outline-none focus:border-white/30"
+                      className="flex-1 min-w-0 bg-zinc-800/60 border border-zinc-700/60 rounded-xl px-2.5 py-1.5 text-[11px] text-white placeholder-zinc-500 focus:outline-none focus:border-white/30"
                     />
-                    <input
-                      type="time"
-                      value={newReminderTime}
-                      onChange={(e) => setNewReminderTime(e.target.value)}
-                      className="w-[72px] shrink-0 bg-zinc-800/60 border border-zinc-700/60 rounded-lg px-2 py-1.5 text-[11px] text-white focus:outline-none focus:border-white/30 [color-scheme:dark]"
-                    />
+                    <div className="relative shrink-0">
+                      <button
+                        type="button"
+                        onClick={openTimePicker}
+                        className="bg-white/10 hover:bg-white/15 border border-white/15 rounded-xl px-3 py-2 flex items-center gap-2 text-white"
+                      >
+                        <Clock className="w-3.5 h-3.5" />
+                        <span className="text-[11px] font-medium">{newReminderTime || 'Set time'}</span>
+                      </button>
+                      {showTimePicker && (
+                        <div className="absolute top-full right-0 mt-2 rounded-2xl border border-white/15 shadow-2xl bg-gray-900/95 backdrop-blur-xl p-3 z-50 w-48">
+                          <div className="flex items-center justify-center gap-1.5">
+                            <select
+                              value={pickerHour}
+                              onChange={(e) => setPickerHour(Number(e.target.value))}
+                              className="bg-white/10 border border-white/15 rounded-lg text-white text-xs px-2 py-1.5 focus:outline-none"
+                            >
+                              {Array.from({ length: 12 }, (_, i) => i + 1).map((h) => (
+                                <option key={h} value={h} className="bg-gray-900">{String(h).padStart(2, '0')}</option>
+                              ))}
+                            </select>
+                            <span className="text-white text-xs">:</span>
+                            <select
+                              value={pickerMinute}
+                              onChange={(e) => setPickerMinute(Number(e.target.value))}
+                              className="bg-white/10 border border-white/15 rounded-lg text-white text-xs px-2 py-1.5 focus:outline-none"
+                            >
+                              {[0, 15, 30, 45].map((mm) => (
+                                <option key={mm} value={mm} className="bg-gray-900">{String(mm).padStart(2, '0')}</option>
+                              ))}
+                            </select>
+                            <select
+                              value={pickerPeriod}
+                              onChange={(e) => setPickerPeriod(e.target.value as 'AM' | 'PM')}
+                              className="bg-white/10 border border-white/15 rounded-lg text-white text-xs px-2 py-1.5 focus:outline-none"
+                            >
+                              <option value="AM" className="bg-gray-900">AM</option>
+                              <option value="PM" className="bg-gray-900">PM</option>
+                            </select>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={confirmTime}
+                            className="w-full mt-2.5 bg-white/15 hover:bg-white/25 border border-white/15 rounded-lg py-1.5 text-[11px] font-bold text-white uppercase tracking-wider transition"
+                          >
+                            Done
+                          </button>
+                        </div>
+                      )}
+                    </div>
                     <button
                       type="button"
                       onClick={addReminder}
-                      className="shrink-0 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700/60 hover:border-white/30 rounded-lg p-1.5 transition-all duration-300"
+                      className="shrink-0 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700/60 hover:border-white/30 rounded-xl p-1.5 transition-all duration-300"
                       aria-label="Add reminder"
                     >
                       <Plus className="w-3.5 h-3.5 text-zinc-200" />
@@ -851,7 +917,7 @@ export default function App() {
                       ))}
                     </div>
                   ) : (
-                    <p className="text-[10px] text-zinc-500">No reminders for {selectedDay.short} {selectedDay.date}. Add one above.</p>
+                    <p className="hidden lg:block text-[10px] text-zinc-500">No reminders for {selectedDay.short} {selectedDay.date}. Add one above.</p>
                   )}
                 </div>
 

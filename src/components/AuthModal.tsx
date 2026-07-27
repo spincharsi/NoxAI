@@ -118,7 +118,7 @@ export default function AuthModal({ onClose, onSuccess, initialMode = 'signin' }
   };
 
   const fieldClass =
-    'w-full bg-zinc-800/80 border rounded-xl pl-10 pr-4 py-3 text-sm text-white placeholder-zinc-500 focus:border-white/30 focus:ring-0 focus:outline-none transition';
+    'w-full bg-zinc-800/80 border rounded-xl pl-10 pr-4 py-3 text-sm text-white placeholder-zinc-500 focus:border-gray-400 focus:bg-white/[0.07] focus:ring-0 focus:outline-none transition-all';
   const errorFieldBorder = 'border-red-500/60';
   const okFieldBorder = 'border-white/15';
 
