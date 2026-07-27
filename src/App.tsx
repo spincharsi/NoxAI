@@ -873,7 +873,7 @@ export default function App() {
                             <select
                               value={pickerHour}
                               onChange={(e) => setPickerHour(Number(e.target.value))}
-                              className="bg-white/5 hover:bg-white/10 backdrop-blur-md text-white border border-white/15 text-xs rounded-xl px-2 py-1.5 focus:outline-none"
+                              className="appearance-none bg-[#181b25] hover:bg-white/10 backdrop-blur-md text-white border border-white/15 text-xs rounded-xl px-2 py-1.5 focus:outline-none focus:ring-0"
                             >
                               {Array.from({ length: 12 }, (_, i) => i + 1).map((h) => (
                                 <option key={h} value={h} className="bg-[#181b25]">{String(h).padStart(2, '0')}</option>
@@ -883,7 +883,7 @@ export default function App() {
                             <select
                               value={pickerMinute}
                               onChange={(e) => setPickerMinute(Number(e.target.value))}
-                              className="bg-white/5 hover:bg-white/10 backdrop-blur-md text-white border border-white/15 text-xs rounded-xl px-2 py-1.5 focus:outline-none"
+                              className="appearance-none bg-[#181b25] hover:bg-white/10 backdrop-blur-md text-white border border-white/15 text-xs rounded-xl px-2 py-1.5 focus:outline-none focus:ring-0"
                             >
                               {[0, 15, 30, 45].map((mm) => (
                                 <option key={mm} value={mm} className="bg-[#181b25]">{String(mm).padStart(2, '0')}</option>
@@ -892,7 +892,7 @@ export default function App() {
                             <select
                               value={pickerPeriod}
                               onChange={(e) => setPickerPeriod(e.target.value as 'AM' | 'PM')}
-                              className="bg-white/5 hover:bg-white/10 backdrop-blur-md text-white border border-white/15 text-xs rounded-xl px-2 py-1.5 focus:outline-none"
+                              className="appearance-none bg-[#181b25] hover:bg-white/10 backdrop-blur-md text-white border border-white/15 text-xs rounded-xl px-2 py-1.5 focus:outline-none focus:ring-0"
                             >
                               <option value="AM" className="bg-[#181b25]">AM</option>
                               <option value="PM" className="bg-[#181b25]">PM</option>
@@ -901,7 +901,7 @@ export default function App() {
                           <button
                             type="button"
                             onClick={confirmTime}
-                            className="w-full mt-2.5 bg-white/15 hover:bg-white/20 backdrop-blur-md text-white border border-white/15 rounded-xl py-1.5 text-[11px] font-bold uppercase tracking-wider transition"
+                            className="w-full mt-2.5 bg-white/5 hover:bg-white/10 backdrop-blur-md text-white border border-white/15 rounded-xl py-1.5 text-[11px] font-bold uppercase tracking-wider transition"
                           >
                             Done
                           </button>
