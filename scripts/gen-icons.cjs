@@ -70,11 +70,9 @@ function render(size) {
         const lx = sx + li * (lw + gap);
         const lh = heights[li], ly = cy - lh / 2;
         if (inRRect(x, y, lx, ly, lw, lh, rad)) {
-          if (li === 0) { r = 255; g = 255; b = 255; }
-          else if (li === 1) {
-            const t = (y - ly) / lh;
-            r = lerp(255, 74, t); g = lerp(255, 222, t); b = lerp(255, 128, t);
-          } else { r = 134; g = 239; b = 172; }
+          if (li === 0) { r = 0xE2; g = 0xE8; b = 0xF0; }
+          else if (li === 1) { r = 0x94; g = 0xA3; b = 0xB8; }
+          else { r = 0x47; g = 0x55; b = 0x69; }
           break;
         }
       }
