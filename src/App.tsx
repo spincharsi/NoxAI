@@ -750,7 +750,7 @@ export default function App() {
               {/* Card 2: Weekly Dosage Reminder (Mobile: 1st | Desktop: 2nd) */}
               <div className="w-full h-auto md:h-full flex flex-col justify-between bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl px-4 py-2.5 md:p-8 shadow-xl order-1 md:order-2 md:col-start-2 md:row-start-1 relative z-20">
                 <div>
-                  <div className="flex items-center justify-between mb-3 md:mb-4">
+                  <div className="flex items-center justify-between mb-2 md:mb-4">
                     <h2 className="text-xs font-semibold tracking-wider text-white uppercase">
                       Weekly Dosage Reminder
                     </h2>
@@ -765,7 +765,7 @@ export default function App() {
                   </div>
 
                   {/* MOBILE: compact 7-day pill strip */}
-                  <div className="grid md:hidden grid-cols-7 gap-1.5 my-2 text-center">
+                  <div className="grid md:hidden grid-cols-7 gap-1.5 my-1 text-center">
                     {weekSchedule.map((item, index) => {
                       const isSelected = selectedDay.short === currentMonthShort && selectedDay.date === item.date;
                       return (
@@ -844,7 +844,7 @@ export default function App() {
                 </div>
 
                 {/* PILL REMINDER & DOSAGE TRACKER */}
-                <div className="mt-3 pt-3 border-t border-white/20 space-y-2">
+                <div className="mt-2 pt-2 md:mt-3 md:pt-3 border-t border-white/20 space-y-2">
                   <p className="text-[10px] font-bold text-zinc-300 uppercase tracking-wider">Pill Reminder &amp; Dosage Tracker</p>
                   <div className="relative z-50 overflow-visible flex gap-1.5">
                     <input
