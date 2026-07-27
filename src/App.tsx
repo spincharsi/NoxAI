@@ -598,7 +598,7 @@ export default function App() {
       </div>
 
       {/* MAIN CONTENT */}
-      <main className="w-full min-h-screen flex flex-col justify-start pb-24 lg:pb-12 overflow-y-auto">
+      <main className="min-h-screen w-full bg-[#1e2230] text-white overflow-y-auto pb-16">
         <input
           ref={fileInputRef}
           type="file"
@@ -609,7 +609,7 @@ export default function App() {
 
         {/* HOME TAB */}
         {activeTab === 'home' && (
-          <div className="gap-3 md:gap-5 animate-fadeIn flex flex-col">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col gap-6 w-full">
 
             {/* Hero Section */}
             <button
@@ -647,10 +647,10 @@ export default function App() {
             </button>
 
             {/* Top Row: 3 Main Cards with High Roundness */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 lg:gap-6 items-start w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start w-full">
 
               {/* Card 1: AI Scan Prescription (Mobile: 3rd | Desktop: 1st) */}
-              <div className="w-full h-auto md:h-full flex flex-col justify-between bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-4 lg:p-6 shadow-xl order-3 md:order-1 md:col-start-1 md:row-start-1">
+              <div className="w-full h-auto md:h-full flex flex-col justify-between bg-[#181b25] border border-white/10 rounded-2xl p-5 lg:p-6 shadow-lg order-3 md:order-1 md:col-start-1 md:row-start-1">
                 <div className="flex flex-col flex-1">
                   <div className="flex items-center justify-between mb-1.5 md:mb-4">
                     <h2 className="text-xs font-bold tracking-wider text-white uppercase">
@@ -710,7 +710,7 @@ export default function App() {
               {/* Card 3: Smart Health Tips (Mobile: 2nd | Desktop: 3rd) */}
               <button
                 onClick={() => setActiveModal('tips')}
-                className="text-left w-full h-auto md:h-full flex flex-col justify-between bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-4 lg:p-6 shadow-xl cursor-pointer md:cursor-default hover:border-zinc-700 transition order-2 md:order-3 md:col-start-3 md:row-start-1"
+                className="text-left w-full h-auto md:h-full flex flex-col justify-between bg-[#181b25] border border-white/10 rounded-2xl p-5 lg:p-6 shadow-lg cursor-pointer md:cursor-default hover:border-zinc-700 transition order-2 md:order-3 md:col-start-3 md:row-start-1"
               >
                 <div>
                   <div className="flex items-center justify-between">
@@ -752,7 +752,7 @@ export default function App() {
               </button>
 
               {/* Card 2: Weekly Dosage Reminder (Mobile: 1st | Desktop: 2nd) */}
-              <div className="w-full h-auto md:h-full flex flex-col justify-between bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-4 lg:p-6 shadow-xl order-1 md:order-2 md:col-start-2 md:row-start-1 relative z-20 mt-0 lg:mt-0">
+              <div className="w-full h-auto md:h-full flex flex-col justify-between bg-[#181b25] border border-white/10 rounded-2xl p-5 lg:p-6 shadow-lg order-1 md:order-2 md:col-start-2 md:row-start-1 relative z-20">
                 <div>
                   <div className="flex items-center justify-between mb-2 md:mb-4">
                     <h2 className="text-xs font-semibold tracking-wider text-white uppercase">
@@ -882,12 +882,12 @@ export default function App() {
                           className="fixed inset-0 z-[99]"
                           onClick={() => setShowTimePicker(false)}
                         />
-                        <div style={{ backgroundColor: '#181b25', borderRadius: '1rem', border: '1px solid rgba(255, 255, 255, 0.2)' }} className="w-full p-4 mt-3 shadow-2xl flex flex-col gap-3 text-white z-[9999]">
+                        <div className="w-full bg-[#181b25] border border-white/20 rounded-2xl p-4 mt-3 shadow-2xl flex flex-col gap-3 text-white z-50">
                           <div className="grid grid-cols-3 gap-2 w-full">
                             <select
                               value={pickerHour}
                               onChange={(e) => setPickerHour(Number(e.target.value))}
-                              className="w-full bg-white/10 border border-white/20 rounded-xl p-2.5 text-center font-bold text-white outline-none"
+                              className="w-full bg-white/10 border border-white/15 rounded-xl p-2.5 text-center font-bold text-white outline-none"
                             >
                               {Array.from({ length: 12 }, (_, i) => i + 1).map((h) => (
                                 <option key={h} value={h} className="bg-[#181b25]">{String(h).padStart(2, '0')}</option>
@@ -896,7 +896,7 @@ export default function App() {
                             <select
                               value={pickerMinute}
                               onChange={(e) => setPickerMinute(Number(e.target.value))}
-                              className="w-full bg-white/10 border border-white/20 rounded-xl p-2.5 text-center font-bold text-white outline-none"
+                              className="w-full bg-white/10 border border-white/15 rounded-xl p-2.5 text-center font-bold text-white outline-none"
                             >
                               {[0, 15, 30, 45].map((mm) => (
                                 <option key={mm} value={mm} className="bg-[#181b25]">{String(mm).padStart(2, '0')}</option>
@@ -905,7 +905,7 @@ export default function App() {
                             <select
                               value={pickerPeriod}
                               onChange={(e) => setPickerPeriod(e.target.value as 'AM' | 'PM')}
-                              className="w-full bg-white/10 border border-white/20 rounded-xl p-2.5 text-center font-bold text-white outline-none"
+                              className="w-full bg-white/10 border border-white/15 rounded-xl p-2.5 text-center font-bold text-white outline-none"
                             >
                               <option value="AM" className="bg-[#181b25]">AM</option>
                               <option value="PM" className="bg-[#181b25]">PM</option>
@@ -914,7 +914,7 @@ export default function App() {
                           <button
                             type="button"
                             onClick={confirmTime}
-                            className="w-full bg-white/20 hover:bg-white/30 border border-white/20 rounded-xl py-2.5 font-extrabold text-center tracking-wider mt-1 transition-all"
+                            className="w-full bg-white/20 hover:bg-white/30 border border-white/20 rounded-xl py-2.5 font-bold text-center mt-1 transition-all text-white"
                           >
                             DONE
                           </button>
@@ -953,9 +953,9 @@ export default function App() {
             </div>
 
             {/* Bottom Row: 3 Mini Cards (Desktop only) */}
-            <div className="hidden lg:grid lg:grid-cols-3 gap-6 mt-2 lg:mt-3 w-full">
+            <div className="hidden lg:grid lg:grid-cols-3 gap-6 w-full">
 
-              <div className="w-full flex items-center gap-4 bg-zinc-900/90 border border-zinc-800 rounded-3xl p-5 shadow-lg">
+              <div className="w-full flex items-center gap-4 bg-[#181b25] border border-white/10 rounded-2xl p-5 lg:p-6 shadow-lg">
                 <div className="p-3 bg-zinc-800 rounded-2xl border border-zinc-700/50 shrink-0">
                   <TrendingDown className="w-6 h-6 text-white" />
                 </div>
@@ -965,7 +965,7 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="w-full flex items-center gap-4 bg-zinc-900/90 border border-zinc-800 rounded-3xl p-5 shadow-lg">
+              <div className="w-full flex items-center gap-4 bg-[#181b25] border border-white/10 rounded-2xl p-5 lg:p-6 shadow-lg">
                 <div className="p-3 bg-zinc-800 rounded-2xl border border-zinc-700/50 shrink-0">
                   <Sparkles className="w-6 h-6 text-zinc-200" />
                 </div>
@@ -975,7 +975,7 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="w-full flex items-center gap-4 bg-zinc-900/90 border border-zinc-800 rounded-3xl p-5 shadow-lg"><div className="p-3 bg-zinc-800 rounded-2xl border border-zinc-700/50"><Layers className="w-6 h-6 text-white" /></div><div><p className="text-[11px] font-bold tracking-wider text-zinc-400 uppercase">ACTIVE FORMULA</p><p className="text-base font-bold text-zinc-100">Live Matrix Active</p></div></div>
+              <div className="w-full flex items-center gap-4 bg-[#181b25] border border-white/10 rounded-2xl p-5 lg:p-6 shadow-lg"><div className="p-3 bg-zinc-800 rounded-2xl border border-zinc-700/50"><Layers className="w-6 h-6 text-white" /></div><div><p className="text-[11px] font-bold tracking-wider text-zinc-400 uppercase">ACTIVE FORMULA</p><p className="text-base font-bold text-zinc-100">Live Matrix Active</p></div></div>
 
             </div>
           </div>
